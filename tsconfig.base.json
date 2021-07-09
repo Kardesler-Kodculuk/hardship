@@ -28,7 +28,7 @@
         "@components":["components"],
         "@contexts":["contexts"],
         "@pages":["pages"],
-        "@services":["services"],
+        "@controller":["controller"],
         "@utils":["utils"],
       }
     },
