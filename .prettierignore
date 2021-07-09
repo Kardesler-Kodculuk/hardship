@@ -1,0 +1,8 @@
+.vscode/
+node_modules/
+public/
+config-overrides.js
+package-lock.json
+package.json
+tsconfig.base.json
+tsconfig.json
