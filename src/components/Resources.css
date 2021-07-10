@@ -6,14 +6,18 @@
   margin: 5px;
   width: 252px;
   height: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  
 }
 
 .barForeground {
   display: block;
   margin-left: 1px;
-  margin-top: -1px;
+  margin-top: -1.7px;
   background-color: yellow;
   height: 20px;
+  border-radius: 5px;
 }
 
 .ResourceDock {
@@ -74,6 +78,7 @@
 }
 
 .humansResourceKey {
+  border-bottom: white thin solid;
   background-color: rgba(0, 125, 250, 1);
   width: 100px;
 }
