@@ -1,8 +1,8 @@
 .barBackground {
   background-color: rgba(0, 0, 0, 0);
-  border-bottom: black thin solid;
-  border-left: black thin solid;
-  border-right: black thin solid;
+  border-bottom: white thin solid;
+  border-left: white thin solid;
+  border-right: white thin solid;
   margin: 5px;
   width: 252px;
   height: 20px;
@@ -54,11 +54,15 @@
 
 .progressResourceBar .barBackground {
   height: 5px;
-  border-bottom: thin black solid;
-  border-left: thin black solid;
-  border-right: thin black solid;
+  border-bottom: 2px white solid;
+  border-left: thin white solid;
+  border-right: thin white solid;
   background-color: rgba(0, 0, 0, 0);
   width: 500px;
+}
+
+.progressResourceBar .barIcon {
+  display: none;
 }
 
 .progressResourceBar .barForeground {

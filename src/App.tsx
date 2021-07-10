@@ -1,17 +1,19 @@
 import React from "react";
 import { Resources } from "@components";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import { gameManager } from "@controller";
+import { GamePage } from "@pages";
 
 function App() {
-  const [tick, setTick] = React.useState(false);
-  React.useEffect(() => {
-    gameManager.gameLoop(0.2);
-    setTimeout(() => setTick((previousTick) => !previousTick), 200);
-  }, [tick]);
   return (
     <div className="App">
-      <Resources />
+      <HashRouter>
+        <Switch>
+          <Route path="/">
+            <GamePage />
+          </Route>
+        </Switch>
+      </HashRouter>
     </div>
   );
 }
