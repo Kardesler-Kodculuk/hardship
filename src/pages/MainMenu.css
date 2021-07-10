@@ -83,7 +83,7 @@
 .mainMenuOptions ul {
   opacity: 0;
   animation: existence 2s ease forwards;
-  animation-delay: 3s;
+  animation-delay: 1s;
 }
 
 .mainMenuOptions a {
