@@ -1,3 +1,2 @@
-import gameManager, { states } from "./Game";
-export { gameManager };
-export type { states };
+export * from "./Game";
+export * from "./RoomCreator"
