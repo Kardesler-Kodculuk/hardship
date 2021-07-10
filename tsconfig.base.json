@@ -30,6 +30,7 @@
         "@pages":["pages"],
         "@controller":["controller"],
         "@utils":["utils"],
+        "@assets": ["assets"],
       }
     },
     "include": [
