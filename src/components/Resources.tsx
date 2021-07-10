@@ -11,15 +11,15 @@ interface ResourceBarProps {
 function getBgColourForResource(resourceName: string): string {
   switch (resourceName) {
     case "energy":
-      return "rgba(255, 255, 0, 1)";
+      return "#ffc107";
     case "food":
-      return "rgba(0, 180, 5, 1)";
+      return "#4caf50";
     case "sanity":
-      return "rgba(180, 0, 150, 1)";
+      return "#e91e63";
     case "progress":
-      return "rgba(0, 125, 250, 0.4)";
+      return "#03a9f4";
     default:
-      return "rgba(0, 0, 255, 1)";
+      return "#2196f3";
   }
 }
 
