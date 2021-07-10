@@ -1,9 +1,25 @@
-.roomImage {
+.room {
+  background-color: gray;
   border-radius: 5px;
   width: 250px;
+  height: 180px;
 }
 
-.roomImage:hover {
+.room:hover {
   box-shadow: 0 0 10px 0px yellow;
   transform: scale(1.02);
+}
+
+.selectedRoom {
+  position: absolute;
+  margin:auto;
+  left: 0; 
+  right: 0; 
+  top: 0; 
+  bottom: 0; 
+  margin: auto; 
+  border-radius: 10px;
+  width: 900px;
+  transition-property: all;
+  transition-duration: 0.5s;
 }
