@@ -3,7 +3,7 @@
   padding: 30px;
   position: relative;
   border-top-right-radius: 20px;
-  border-right: rgb(40, 0, 0) thick solid;
+  /*  border-right: rgb(40, 0, 0) thick solid; */
   background-size: 6%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -11,6 +11,7 @@
   row-gap: 60px;
 }
 
+/**
 .Ship::after {
   position: absolute;
   border-radius: 20px;
@@ -22,9 +23,12 @@
   height: 100%;
   box-shadow: rgb(255, 0, 0) -9px 0 10px 10px;
 }
+*/
 
 .shipWrapper {
-  position: absolute;
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   display: flex;

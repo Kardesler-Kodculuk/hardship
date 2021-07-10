@@ -1,0 +1,146 @@
+.mainMenuScreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes existence {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.mainMenuGameTitle {
+  animation: existence 2s ease forwards;
+  animation-iteration-count: 1;
+  font-family: "Tourney";
+  margin-bottom: 0.9em;
+  font-size: 170px;
+  color: white;
+  text-shadow: rgb(0, 0, 255) 0 0 20px;
+}
+
+@keyframes lights {
+  0% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  85% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fallenLetter {
+  text-shadow: none;
+  display: inline-block;
+  transform: rotate(-30deg);
+}
+
+.fallenLetter::after {
+  animation: lights 5s ease-out;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  content: "d";
+  position: absolute;
+  left: 0;
+  text-shadow: rgb(0, 0, 255) 0 0 20px;
+}
+
+.mainMenuOptions ul {
+  opacity: 0;
+  animation: existence 2s ease forwards;
+  animation-delay: 3s;
+}
+
+.mainMenuOptions a {
+  font-size: 40px;
+  text-decoration: none;
+  color: white;
+  font-family: "Roboto Slab";
+  transition: text-shadow 100ms ease;
+}
+
+.mainMenuOptions a:hover {
+  text-shadow: rgb(0, 0, 255) 0 0 20px;
+}
+
+.mainMenuOptions li {
+  margin-bottom: 0.5em;
+}
+
+.helpMenuHidden {
+  display: none;
+}
+
+@keyframes fromup {
+  from {
+    margin-top: -100px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+.helpMenuVisible {
+  animation: fromup 0.5s ease forwards;
+  position: absolute;
+
+  background-color: rgba(25, 25, 25, 1);
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  color: white;
+  padding: 5px;
+}
+
+.helpTextArea {
+  overflow-y: scroll;
+  padding: 20px;
+  text-align: left;
+}
+
+.backButton {
+  background-color: white;
+  color: black;
+  border: none;
+  width: 100%;
+}
