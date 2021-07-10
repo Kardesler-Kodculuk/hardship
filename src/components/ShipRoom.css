@@ -1,24 +1,72 @@
 .room {
+  padding: 2px;
+  margin-left: 1.5px;
+  margin-right: 1.5px;
   border-radius: 5px;
   width: 250px;
   height: 180px;
+  transition: all 0.1s ease; 
 }
 
 .room:hover {
-  box-shadow: 0 0 10px 0px yellow;
+  box-shadow: 0 0 8px 0px yellow;
   transform: scale(1.02);
 }
 
 .selectedRoom {
-  filter: brightness(15%);
   position: absolute;
+  filter: brightness(15%);
   margin:auto;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
   width: 900px;
-  transition: all 0.5s ease; 
-  box-shadow: 0 0 25px 2px green;
+  transition: all 0.4s ease; 
 }
 
+.hiddenPanel {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.settingsPanel {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 25px;
+  margin:auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 500px;
+  transition: opacity 0.03s ease-out 0.4s;
+  padding: 5px;
+}
+
+.settingsClose{
+  color: black;
+  display: flex;
+  background-color: rgb(250, 0, 0);
+  margin-right: 15px;
+  margin-left: auto;
+  margin-top: 5px;
+  border-radius: 5px;
+  
+}
+
+
+.settingsClose:hover{
+  color: white;
+  background-color: rgb(199, 55, 55);
+}
+
+.settings {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: auto;
+  margin-bottom: auto;
+}

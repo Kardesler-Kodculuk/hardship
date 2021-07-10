@@ -13,12 +13,28 @@ interface RoomProps {
 export default function ShipRoom(props: RoomProps) {
   const [select, setSelect] = useState(false);
   return (
-    <div className={select ? "" : "room"} onClick={() => setSelect(!select)}>
+    <div
+      className={select ? "" : "room"}
+      onClick={() => {
+        if (!select) {
+          setSelect(true);
+        }
+      }}
+    >
       <img
         className={select ? "selectedRoom" : "room"}
         src={`/assets/images/rooms/${props.roomName}.png`}
         alt={`${props.roomTitle} resmi.`}
       ></img>
+
+      <div className={select ? "settingsPanel" : "hiddenPanel"}>
+        <button className="settingsClose" onClick={() => setSelect(false)}>
+          X
+        </button>
+        <div className="settings">
+          <div>asdasd</div>
+        </div>
+      </div>
     </div>
   );
 }
