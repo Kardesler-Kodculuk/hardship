@@ -17,10 +17,10 @@ class Game {
   constructor() {
     this.resources = {
       energy: { total: 0.0, change: 10, limit: 1000 },
-      humans: { total: 0.0, change: 0.1, limit: 250 },
-      food: { total: 0.0, change: 0, limit: 1000 },
-      sanity: { total: 0.0, change: 0.01, limit: 1000 },
-      progress: { total: 0.0, change: 0.1, limit: 1000 },
+      humans: { total: 0.0, change: 10, limit: 250 },
+      food: { total: 0.0, change: 10, limit: 1000 },
+      sanity: { total: 0.0, change: 10, limit: 1000 },
+      progress: { total: 0.0, change: 10, limit: 1000 },
     };
   }
 

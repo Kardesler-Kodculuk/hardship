@@ -8,14 +8,37 @@ interface ResourceBarProps {
   resourceLimit: number;
 }
 
+function getBgColourForResource(resourceName: string): string {
+  switch (resourceName) {
+    case "energy":
+      return "rgba(255, 255, 0, 1)";
+    case "food":
+      return "rgba(0, 180, 5, 1)";
+    case "sanity":
+      return "rgba(180, 0, 150, 1)";
+    case "progress":
+      return "rgba(0, 125, 250, 0.4)";
+    default:
+      return "rgba(0, 0, 255, 1)";
+  }
+}
+
 function ResourceBar(props: ResourceBarProps) {
   return (
     <div className={props.resourceName + "ResourceBar"}>
+      <img
+        src={`/assets/images/icons/${props.resourceName}.svg`}
+        className="barIcon"
+      ></img>
       <div className="barBackground">
         <div
           className="barForeground"
           style={{
-            width: (props.totalResources / props.resourceLimit) * 100 + "px",
+            width:
+              (props.totalResources / props.resourceLimit) *
+                (props.resourceName !== "progress" ? 250 : 480) +
+              "px",
+            backgroundColor: getBgColourForResource(props.resourceName),
           }}
         ></div>
       </div>
@@ -30,7 +53,11 @@ function ResourceBar(props: ResourceBarProps) {
 function ResourceKey(props: ResourceBarProps) {
   return (
     <div className={props.resourceName + "ResourceKey"}>
-      {props.resourceName} - {props.totalResources}/{props.resourceLimit}
+      <img
+        className={`resourceImage`}
+        src={`/assets/images/icons/${props.resourceName}.svg`}
+      />
+      {Math.round(props.totalResources)}/{props.resourceLimit}
     </div>
   );
 }
@@ -39,7 +66,7 @@ export default function Resources() {
   return (
     <div className="ResourceDock">
       <div className="ResourceBars">
-        {["energy", "food", "progress", "sanity"].map((element, index) => {
+        {["energy", "food", "sanity"].map((element, index) => {
           return (
             <ResourceBar
               key={"resourceNames" + index}
@@ -58,6 +85,11 @@ export default function Resources() {
         resourceName="humans"
         totalResources={gameManager.resources.humans.total}
         resourceLimit={gameManager.resources.humans.limit}
+      />
+      <ResourceBar
+        resourceName="progress"
+        totalResources={gameManager.resources.progress.total}
+        resourceLimit={gameManager.resources.progress.limit}
       />
     </div>
   );
