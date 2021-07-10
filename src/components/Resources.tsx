@@ -52,12 +52,18 @@ function ResourceBar(props: ResourceBarProps) {
  */
 function ResourceKey(props: ResourceBarProps) {
   return (
-    <div className={props.resourceName + "ResourceKey"}>
-      <img
-        className={`resourceImage`}
-        src={`/assets/images/icons/${props.resourceName}.svg`}
-      />
-      {Math.round(props.totalResources)}/{props.resourceLimit}
+    <div className="resourceKeyWrapper">
+      <div className={props.resourceName + "ResourceKey"}>
+        <img
+          className={`resourceImage`}
+          src={`/assets/images/icons/${props.resourceName}.svg`}
+        />
+        {Math.round(props.totalResources)}/{props.resourceLimit}
+      </div>
+      <div className="deadCount">
+        <img src="/assets/images/icons/grave.svg" className="barIcon"></img>
+        <p> 25 </p>
+      </div>
     </div>
   );
 }
