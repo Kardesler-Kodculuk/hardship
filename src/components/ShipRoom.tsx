@@ -20,3 +20,18 @@ export default function ShipRoom(props: RoomProps) {
     </div>
   );
 }
+interface SelectionProps {
+  roomName: string; // Represents the internal filename.
+  roomTitle: string; // Actual presented name.
+}
+function SelectedRoom(props: SelectionProps) {
+  return (
+    <div>
+      <img
+        className="roomImage"
+        src={`/assets/images/rooms/${props.roomName}.png`}
+        alt={`${props.roomTitle} resmi.`}
+      ></img>
+    </div>
+  );
+}
