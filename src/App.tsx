@@ -4,9 +4,11 @@ import "./App.css";
 import { gameManager } from "@controller";
 
 function App() {
+  const [tick, setTick] = React.useState(false);
   React.useEffect(() => {
-    setInterval(() => gameManager.gameLoop(0.5), 500);
-  }, []);
+    gameManager.gameLoop(0.2);
+    setTimeout(() => setTick((previousTick) => !previousTick), 200);
+  }, [tick]);
   return (
     <div className="App">
       <Resources />

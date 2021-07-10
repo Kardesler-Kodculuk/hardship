@@ -1,11 +1,11 @@
 import Game, { states } from "./Game"
 
 const CHANGE: states = {
-  energy: { total: 0, change: 0 },
-  humans: { total: 0, change: 0 },
-  food: { total: 0, change: 0 },
-  sanity: { total: 0, change: 0 },
-  progress: { total: 0, change: 0 },
+  energy: { total: 0, change: 0, limit: 0 },
+  humans: { total: 0, change: 0, limit: 0 },
+  food: { total: 0, change: 0, limit: 0 },
+  sanity: { total: 0, change: 0, limit: 0 },
+  progress: { total: 0, change: 0, limit: 0 },
 }
 
 export interface Effect {
