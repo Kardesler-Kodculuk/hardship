@@ -1,18 +1,87 @@
 .barBackground {
-  background-color: grey;
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: black thin solid;
+  border-left: black thin solid;
+  border-right: black thin solid;
   margin: 5px;
-  width: 100px;
+  width: 252px;
   height: 20px;
 }
 
 .barForeground {
   display: block;
+  margin-left: 1px;
+  margin-top: -1px;
   background-color: yellow;
   height: 20px;
+}
+
+.ResourceDock {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ResourceBars {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 20px;
+}
+
+.progressResourceBar {
+  position: absolute;
+  bottom: 10px;
+  width: 480px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sanityResourceBar,
+.foodResourceBar,
+.energyResourceBar {
+  display: flex;
+  align-items: center;
+}
+
+.barIcon {
+  width: 20px;
+}
+
+.progressResourceBar .barBackground {
+  height: 5px;
+  border-bottom: thin black solid;
+  border-left: thin black solid;
+  border-right: thin black solid;
+  background-color: rgba(0, 0, 0, 0);
+  width: 500px;
+}
+
+.progressResourceBar .barForeground {
+  position: absolute;
+  bottom: 10px;
+  margin-left: 10px;
+  height: 10px;
+  background-color: rgba(0, 125, 250, 0.4);
+}
+
+.humansResourceKey {
+  background-color: rgba(0, 125, 250, 1);
+  width: 100px;
+}
+
+.humansResourceKey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
+  color: white;
+}
+
+.humansResourceKey .resourceImage {
+  width: 20px;
 }
