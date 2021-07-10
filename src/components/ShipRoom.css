@@ -1,5 +1,4 @@
 .room {
-  background-color: gray;
   border-radius: 5px;
   width: 250px;
   height: 180px;
@@ -11,6 +10,7 @@
 }
 
 .selectedRoom {
+  filter: brightness(15%);
   position: absolute;
   margin:auto;
   left: 50%;
