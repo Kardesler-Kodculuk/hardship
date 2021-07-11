@@ -1,0 +1,74 @@
+.oldComputerScreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 640px;
+  height: 480px;
+  background-color: black;
+  border: bisque thin solid;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.oldComputerScreen p {
+  font-family: "VT323";
+  color: green;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+@keyframes flickerbutton {
+  0% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes flickercursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.oldComputerScreen p:last-of-type::after {
+  content: " |";
+  animation: flickercursor 0.9s infinite linear;
+  font-family: "VT323";
+  color: green;
+}
+
+@keyframes buttonappear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.oldComputerScreen button {
+  animation: flickerbutton 0.9s infinite linear;
+  border: none;
+  background-color: rgba(0, 255, 0, 0.2);
+  font-size: 2em;
+  padding: 0.5em;
+  font-family: "VT323";
+  width: 600px;
+  color: green;
+  position: absolute;
+  top: 300px;
+}

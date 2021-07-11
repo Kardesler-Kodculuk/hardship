@@ -1,5 +1,5 @@
 import React from "react";
-import { Resources, WelcomeMessage } from "@components";
+import { EndScreen, Resources, WelcomeMessage } from "@components";
 import { gameManager } from "@controller";
 import "./GamePage.css";
 import { Ship } from "@components";
@@ -7,10 +7,7 @@ import { useGame } from "@services";
 import anime from "animejs";
 import { useHistory } from "react-router";
 
-function fireEngines(
-  background: React.RefObject<HTMLImageElement>,
-  callback: () => void
-) {
+function fireEngines(callback: () => void) {
   let target = document.getElementsByClassName("shipWrapper")[0];
   anime({
     targets: [target], // Animate the ship
@@ -23,13 +20,46 @@ function fireEngines(
   });
 }
 
-export default function GamePage() {
+function destroyShip(callback: () => void) {
+  let target = document.getElementsByClassName("shipWrapper")[0];
+  anime({
+    targets: [target], // Animate the ship
+    rotateZ: 360,
+    duration: 200000,
+    easing: "linear",
+    loop: true,
+    loopBegin: () => {
+      callback();
+    },
+  });
+}
+
+function findDeadWhy() {
+  if (gameManager.resources.sanity.total <= 0) {
+    return "uzayın boşluğuna teslim oldular";
+  } else if (gameManager.resources.sanity.total <= 0) {
+    return "kabul edilen yiyecek kaynaklarından vazgeçmek zorunda kaldılar";
+  } else if (gameManager.resources.energy.total <= 0) {
+    return "enerjileri bittiği için dondular";
+  } else if (gameManager.resources.humans.total <= 0) {
+    return "bütün yolcularını kaybettiler";
+  }
+}
+
+export function GamePage() {
   const [tick, setTick] = React.useState(false);
   const [event, setEvent] = React.useState(0);
   const { freezed, freeze, fireEvents } = useGame();
   const background = React.useRef<HTMLImageElement>(null);
-  const { push } = useHistory();
-  const [gameOver, setGameOver] = React.useState(false);
+  const history = useHistory();
+  const [gameState, setGameState] = React.useState("ongoing");
+  const goToWinScreen = () => {
+    setGameState("victory");
+  };
+  const goToLoseScreen = () => {
+    setGameState("defeat");
+  };
+
   React.useEffect(() => {
     if (event % 16 === 0) {
       fireEvents();
@@ -38,20 +68,24 @@ export default function GamePage() {
 
   React.useEffect(() => {
     const goToWinScreen = () => {
-      push("/winscreen");
+      history.push("/winscreen");
     };
 
     if (!freezed) {
       gameManager.gameLoop(0.2);
       setTimeout(() => setTick((previousTick) => !previousTick), 200);
-
       if (
         gameManager.resources.progress.total >=
         gameManager.resources.progress.limit
       ) {
         freeze();
-        setGameOver(true);
-        fireEngines(background, goToWinScreen);
+        setGameState("limbo");
+        fireEngines(goToWinScreen);
+      } else if (gameManager.anyZero()) {
+        console.log("Game lost..");
+        freeze();
+        setGameState("limbo");
+        destroyShip(goToLoseScreen);
       }
       let e = event + 1;
       setEvent(e);
@@ -80,9 +114,27 @@ export default function GamePage() {
         alt="A sliding background full of stars."
         src={"/assets/images/backgrounds/gamebg.jpg"}
       ></img>
-      <Ship gameOver={gameOver} />
-      {!gameOver ? <Resources /> : null}
-      {!gameOver ? <WelcomeMessage /> : null}
+      <Ship gameOver={gameState !== "ongoing"} />
+      {gameState === "victory" ? (
+        <EndScreen
+          paragraphs={[
+            "Tebrikler kaptan! Gemiyi başarıyla hedefine ulaştırdınız.",
+            "C:\\> TYPE STATS.TXT",
+            `${gameManager.resources.humans.limit} sayıda yolcunun ${gameManager.resources.humans.total} adedini uyandırdınız ve canlı tuttunuz.`,
+          ]}
+        />
+      ) : null}
+      {gameState === "defeat" ? (
+        <EndScreen
+          paragraphs={[
+            `Malesef bu gemi hedefine ulaşamadı. Geminin yolcuları, mürettabatı ve kaptanı ${findDeadWhy()}.`,
+            "C:\\> TYPE STATS.TXT",
+            `${gameManager.resources.humans.limit} sayıda yolcudan ${gameManager.resources.humans.total} adedini uyandırdınız ve sona tanık oldular...`,
+          ]}
+        />
+      ) : null}
+      {gameState === "ongoing" ? <Resources /> : null}
+      {gameState === "ongoing" ? <WelcomeMessage /> : null}
     </div>
   );
 }
