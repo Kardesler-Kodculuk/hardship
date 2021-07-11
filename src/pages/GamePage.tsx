@@ -3,16 +3,16 @@ import { Resources, WelcomeMessage } from "@components";
 import { gameManager } from "@controller";
 import "./GamePage.css";
 import { Ship } from "@components";
-
+import { useGame } from "@services";
 export default function GamePage() {
   const [tick, setTick] = React.useState(false);
-  const [isFrozen, setIsFrozen] = React.useState(true);
+  const game = useGame();
   React.useEffect(() => {
-    if (!isFrozen) {
+    if (!game?.freezed) {
       gameManager.gameLoop(0.2);
       setTimeout(() => setTick((previousTick) => !previousTick), 200);
     }
-  }, [tick, isFrozen]);
+  }, [tick, game?.freezed]);
   return (
     <div className="gameWindow">
       <img
@@ -22,7 +22,7 @@ export default function GamePage() {
       ></img>
       <Resources />
       <Ship />
-      <WelcomeMessage setIsFrozen={setIsFrozen} />
+      <WelcomeMessage />
     </div>
   );
 }
