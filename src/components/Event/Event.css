@@ -1,0 +1,73 @@
+.hiddenEvent {
+  display: none;
+}
+
+.visibleEvent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 120, 0.95);
+  width: 450px;
+  padding: 10px;
+}
+
+.visibleEvent p {
+  font-family: "VT323";
+  color: green;
+}
+
+.visibleEvent p em {
+  font-family: "VT323";
+  font-weight: 400;
+}
+
+.eventTextSection {
+  text-align: left;
+  margin: 30px;
+  margin-top: 11;
+  margin-bottom: 11;
+  padding: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 19px;
+  background-color: black;
+  overflow-y: auto;
+}
+
+.eventButtonSection {
+  width: 100%;
+}
+
+.eventButton {
+  width: 100%;
+  border: none;
+  font-size: 20px;
+}
+
+@keyframes stutter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.eventHeaderSection {
+  animation: stutter 1s ease-out infinite;
+  font-family: "Roboto";
+  font-size: 15px;
+  margin: 0;
+}
+
+.eventHeaderSection h1 {
+  color: white;
+  margin: 0;
+  margin-bottom: -0.5em;
+}

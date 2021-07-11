@@ -23,11 +23,13 @@ export interface Event {
 
 export default class Events {
   events: Event[]
-  current: states[]
+  currentEvents: Event[]
+  currentEffects: states[]
   //needs an array of events
   constructor(...events: Event[]) {
     this.events = events
-    this.current = []
+    this.currentEffects = []
+    this.currentEvents = []
   }
 
   //fires a random event from the event arrays
@@ -44,7 +46,8 @@ export default class Events {
         r[e.to].total += e.value
       }
     })
-    this.current.push(r)
+    this.currentEvents.push(e)
+    this.currentEffects.push(r)
     Game.modifyResources(c)
     return this.currentEventCount()
   }
@@ -54,17 +57,17 @@ export default class Events {
     if (!this.isEventPresent()) {
       throw new Error('There is no present event')
     }
-    this.current.forEach(e => {
+    this.currentEffects.forEach(e => {
       Game.modifyResources(e)
     })
   }
 
   isEventPresent(): boolean {
-    return this.current.length !== 0
+    return this.currentEffects.length !== 0
   }
 
   currentEventCount(): number {
-    return this.current.length
+    return this.currentEffects.length
   }
 }
 

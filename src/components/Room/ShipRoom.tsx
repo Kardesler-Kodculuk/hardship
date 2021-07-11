@@ -2,8 +2,8 @@ import React from "react";
 import "./ShipRoom.css";
 import { useState } from "react";
 import RoomSettings from "./RoomSettings";
-import { Room } from "controller";
-
+import { Room, Event } from "controller";
+import { Event as EventComponent } from "../Event/Event";
 interface RoomProps {
   room: Room;
 }
@@ -24,7 +24,9 @@ export default function ShipRoom(props: RoomProps) {
       }}
     >
       <img
-        className={select ? "selectedRoom" : "room"}
+        className={
+          select ? "selectedRoom" : "room " + dangerLevel(room.failureRate)
+        }
         src={`/assets/images/rooms/${room.name}.png`}
         alt={`${room.title} resmi.`}
       ></img>
@@ -37,37 +39,28 @@ export default function ShipRoom(props: RoomProps) {
           />
         );
       })}
-      <RenderWarning failureRate={room.failureRate} />
       <div className={select ? "settingsPanel" : "hiddenPanel"}>
         <button className="settingsClose" onClick={() => setSelect(false)}>
           X
         </button>
-
         <RoomSettings room={room} />
+        <Events events={room.eventHandler.currentEvents} />
       </div>
     </div>
   );
 }
 
-function RenderWarning(props: { failureRate: number }) {
-  const { failureRate } = props;
-  if (failureRate >= 20) {
-    return (
-      <img
-        alt="staffImages"
-        className="warnings"
-        src={`/assets/images/rooms/warning.png`}
-      />
-    );
-  } else if (failureRate >= 70) {
-    return (
-      <img
-        alt="staffImages"
-        className="warnings"
-        src={`/assets/images/rooms/danger.png`}
-      />
-    );
+function dangerLevel(failureRate: number) {
+  if (failureRate < 10) {
+    return "lowDanger";
+  } else if (failureRate < 50) {
+    return "moderateDanger";
   } else {
-    return null;
+    return "highDanger";
   }
+}
+
+function Events(props: { events: Event[] }) {
+  const { events } = props;
+  return <div>{events.map((e) => null)}</div>;
 }
