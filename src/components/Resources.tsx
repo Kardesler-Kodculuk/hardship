@@ -113,7 +113,7 @@ export default function Resources() {
       </div>
       <ResourceKey
         resourceName="humans"
-        totalResources={gameManager.resources.humans.total}
+        totalResources={gameManager.staffCount}
         resourceLimit={gameManager.resources.humans.limit}
       />
       <ResourceBar

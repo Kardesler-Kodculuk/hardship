@@ -1,11 +1,15 @@
 import React from "react";
 import { useEffect } from "react";
 import { rooms } from "@controller";
+import { gameManager } from "@controller";
 interface Game {
   freezed: boolean;
   freeze: () => void;
   unFreeze: () => void;
   fireEvents: () => void;
+  addStaff: () => void;
+  removeStaff: () => void;
+  wakeStaff: () => void;
 }
 
 const GameContext = React.createContext<Game | null>(null);
@@ -41,6 +45,7 @@ export const GameProvider = (props: GameProviderProps) => {
   const fireEvents = () => {
     rooms.forEach((room) => {
       if (
+        room.name !== "cold" &&
         room.failureRate > Math.floor(Math.random() * 100) &&
         room.fireEvent()
       ) {
@@ -49,11 +54,26 @@ export const GameProvider = (props: GameProviderProps) => {
     });
   };
 
+  const addStaff = () => {
+    gameManager.getSingleStaff();
+  };
+
+  const removeStaff = () => {
+    gameManager.putBackStaff();
+  };
+
+  const wakeStaff = () => {
+    gameManager.addToStaff(1);
+  };
+
   const value = {
     freezed,
     freeze,
     unFreeze,
     fireEvents,
+    addStaff,
+    removeStaff,
+    wakeStaff,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

@@ -1,8 +1,11 @@
 import "./RoomSettings.css";
 import "./ColdRoomSettings.css";
 import { gameManager } from "@controller";
+import { useGame } from "@services";
 
 export function ColdRoomSettings() {
+  const { wakeStaff } = useGame();
+  console.log(gameManager.resources.humans);
   return (
     <div className="settings">
       <div className="coldRoomControls">
@@ -15,7 +18,7 @@ export function ColdRoomSettings() {
         </p>
         <button
           onClick={() => {
-            gameManager.addHumans(1);
+            wakeStaff();
           }}
           disabled={
             gameManager.deadCount + gameManager.resources.humans.total >=

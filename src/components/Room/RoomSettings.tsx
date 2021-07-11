@@ -2,6 +2,7 @@ import React from "react";
 import "./RoomSettings.css";
 import { useState, useEffect } from "react";
 import { Room } from "controller";
+import { useGame } from "@services";
 
 interface RoomSettingsProps {
   room: Room;
@@ -9,7 +10,7 @@ interface RoomSettingsProps {
 
 export default function RoomSettings(props: RoomSettingsProps) {
   const { room } = props;
-
+  const { addStaff: add, removeStaff: remove } = useGame();
   const [staff, setStaff] = useState(0);
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function RoomSettings(props: RoomSettingsProps) {
 
   const addStaff = () => {
     try {
+      add();
       room.addStaff();
     } catch (err) {
       console.log(err.message);
@@ -27,6 +29,7 @@ export default function RoomSettings(props: RoomSettingsProps) {
   const removeStaff = () => {
     try {
       room.removeStaff();
+      remove();
     } catch (err) {
       console.log(err.message);
     }
