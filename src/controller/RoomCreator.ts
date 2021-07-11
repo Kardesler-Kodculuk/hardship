@@ -97,8 +97,6 @@ const ColdRoom = new Room(
 
 const rooms = [Generator, Cafeteria, LivingArea, ControlDeck, Armory, ColdRoom]
 
-LivingArea.fireEvent()
-
 export {
   rooms,
   Generator,

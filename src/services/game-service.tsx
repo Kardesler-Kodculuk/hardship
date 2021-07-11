@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
-
+import { rooms } from "@controller";
 interface Game {
   freezed: boolean;
   freeze: () => void;
   unFreeze: () => void;
+  fireEvents: () => void;
 }
 
 const GameContext = React.createContext<Game | null>(null);
@@ -16,10 +17,10 @@ interface GameProviderProps {
 export const GameProvider = (props: GameProviderProps) => {
   const { children } = props;
   const [freezed, setFreeze] = React.useState(true);
-  const [lock, setLock] = React.useState(1);
+  const [lock, setLock] = React.useState<number[]>([1]);
 
   useEffect(() => {
-    if (lock === 0) {
+    if (lock.length === 0) {
       setFreeze(false);
     } else {
       setFreeze(true);
@@ -27,23 +28,34 @@ export const GameProvider = (props: GameProviderProps) => {
   }, [lock]);
 
   const freeze = () => {
-    let f = lock + 1;
-    setLock(f);
+    setLock([1, ...lock]);
   };
 
   const unFreeze = () => {
-    let f = lock - 1;
-    if (f >= 0) {
+    if (lock.length > 0) {
+      let f = [...lock];
+      f.pop();
       setLock(f);
     } else {
-      throw new Error("You can not unfreeze continuing game");
     }
+  };
+
+  const fireEvents = () => {
+    rooms.forEach((room) => {
+      if (room.failureRate > Math.floor(Math.random() * 100)) {
+        if (room.fireEvent()) {
+          console.log(room.name, room.eventHandler.currentEventCount());
+          freeze();
+        }
+      }
+    });
   };
 
   const value = {
     freezed,
     freeze,
     unFreeze,
+    fireEvents,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

@@ -25,14 +25,22 @@ function fireEngines(
 
 export default function GamePage() {
   const [tick, setTick] = React.useState(false);
-  const { freezed, freeze } = useGame();
+  const [event, setEvent] = React.useState(0);
+  const { freezed, freeze, fireEvents } = useGame();
   const background = React.useRef<HTMLImageElement>(null);
-  const history = useHistory();
+  const { push } = useHistory();
   const [gameOver, setGameOver] = React.useState(false);
-  const goToWinScreen = () => {
-    history.push("/winscreen");
-  };
   React.useEffect(() => {
+    if (event % 16 === 0) {
+      fireEvents();
+    }
+  }, [event, fireEvents]);
+
+  React.useEffect(() => {
+    const goToWinScreen = () => {
+      push("/winscreen");
+    };
+
     if (!freezed) {
       gameManager.gameLoop(0.2);
       setTimeout(() => setTick((previousTick) => !previousTick), 200);
@@ -45,8 +53,11 @@ export default function GamePage() {
         setGameOver(true);
         fireEngines(background, goToWinScreen);
       }
+      let e = event + 1;
+      setEvent(e);
     }
-  }, [tick, freezed, freeze]);
+  }, [tick, freezed, freeze, push]);
+
   React.useEffect(() => {
     if (
       freezed &&
@@ -59,7 +70,8 @@ export default function GamePage() {
     ) {
       background.current?.classList.add("spaceBackgroundAnimated");
     }
-  }, [freezed, freeze]);
+  }, [freezed]);
+
   return (
     <div className="gameWindow">
       <img
@@ -74,4 +86,3 @@ export default function GamePage() {
     </div>
   );
 }
-

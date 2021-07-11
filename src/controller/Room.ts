@@ -1,6 +1,6 @@
 import Events, { Event } from "./Events"
 
-export class Room{
+export class Room {
   eventHandler: Events
   description: string
   minStaffCount: number
@@ -25,7 +25,7 @@ export class Room{
     this.maxStaffCount = 10
   }
 
-  fireEvent(): number {
+  fireEvent(): boolean {
     return this.eventHandler.fireEvent()
   }
 

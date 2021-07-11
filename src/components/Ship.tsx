@@ -1,9 +1,10 @@
-import { Event, Room, rooms } from "@controller";
+import { Event, Room, rooms, EventWithCount } from "@controller";
 import React from "react";
 import ShipRoom from "./Room/ShipRoom";
 import "./Ship.css";
 import { Event as EventComp } from "./Event/Event";
 import { useGame } from "@services";
+import { useEffect } from "react";
 
 export function Ship(props: { gameOver: boolean }) {
   return (
@@ -27,19 +28,24 @@ export function Ship(props: { gameOver: boolean }) {
 }
 
 function Events(props: { room: Room }) {
-  const { freeze } = useGame();
+  const [event, setEvents] = React.useState<EventWithCount[] | null>(null);
   const { room } = props;
+  useEffect(() => {
+    setEvents(room.eventHandler.currentEvents);
+  }, [room.eventHandler.currentEvents]);
+  if (!event) {
+    return null;
+  }
   return (
     <div>
-      {room.eventHandler.currentEvents.map((e, i) => {
-        console.log("asdasdasd");
+      {event.map((e, i) => {
         return (
           <div>
             <EventComp
               key={"Event" + room.name + i}
               message={e.description}
               title={e.title}
-              id={e.id}
+              count={e.count}
               show={e.show}
               room={room}
             />

@@ -21,9 +21,18 @@ export interface Event {
   description: string
   effects: Effect[]
 }
+
+export interface EventWithCount {
+  id: number
+  count: number
+  show: boolean
+  title: string
+  description: string
+  effects: Effect[]
+}
 export default class Events {
   events: Event[]
-  currentEvents: Event[]
+  currentEvents: EventWithCount[]
   currentEffects: states[]
   //needs an array of events
   constructor(...events: Event[]) {
@@ -33,23 +42,26 @@ export default class Events {
   }
 
   //fires a random event from the event arrays
-  fireEvent() {
-    let e = this.events[~~(Math.random() * this.events.length)]
-    let c = { ...CHANGE }
-    let r = { ...CHANGE }
-    e.effects.forEach(e => {
-      if (e.type === "continuous") {
-        c[e.to].change += e.value
-        r[e.to].change += e.value
-      } else {
-        c[e.to].total += e.value
-        r[e.to].total += e.value
-      }
-    })
-    this.currentEvents.push(e)
-    this.currentEffects.push(r)
-    Game.modifyResources(c)
-    return this.currentEventCount()
+  fireEvent(): boolean {
+    if (this.currentEventCount() < 4) {
+      let e = this.events[~~(Math.random() * this.events.length)]
+      let c = { ...CHANGE }
+      let r = { ...CHANGE }
+      e.effects.forEach(e => {
+        if (e.type === "continuous") {
+          c[e.to].change += e.value
+          r[e.to].change += e.value
+        } else {
+          c[e.to].total += e.value
+          r[e.to].total += e.value
+        }
+      })
+      this.currentEvents.push({ ...e, count: this.currentEventCount() })
+      this.currentEffects.push(r)
+      Game.modifyResources(c)
+      return true
+    }
+    return false
   }
 
   //Stops the all current events
@@ -70,8 +82,8 @@ export default class Events {
     return this.currentEffects.length
   }
 
-  showEvent(id: number) {
-    const e = this.currentEvents.find(e => e.id === id)
+  showEvent(count: number) {
+    const e = this.currentEvents.find(e => e.count === count)
     if (e) {
       e.show = true
     } else {
@@ -79,8 +91,8 @@ export default class Events {
     }
   }
 
-  hideEvent(id: number) {
-    const e = this.currentEvents.find(e => e.id === id)
+  hideEvent(count: number) {
+    const e = this.currentEvents.find(e => e.count === count)
     if (e) {
       e.show = false
     } else {
@@ -88,8 +100,8 @@ export default class Events {
     }
   }
 
-  isShown(id: number): boolean {
-    const e = this.currentEvents.find(e => e.id === id)
+  isShown(count: number): boolean {
+    const e = this.currentEvents.find(e => e.count === count)
     if (e) {
       return e.show
     } else {

@@ -97,17 +97,26 @@
 .deadCount {
   background-color: rgb(20, 20, 20);
   position: absolute;
+  display: flex;
   padding-left: 0.5em;
   gap: 0.5em;
   color: white;
   height: 25px;
-  display: flex;
   width: 65px;
   margin-left: 13.5px;
   justify-content: center;
   align-items: center;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  display: none;
+}
+
+.resourceKeyWrapper {
+  display: flex;
+}
+
+.resourceKeyWrapper:hover .deadCount {
+  display: flex;
 }
 
 .deadCount p {

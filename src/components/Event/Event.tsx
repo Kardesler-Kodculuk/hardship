@@ -6,21 +6,19 @@ import { useEffect } from "react";
 
 export function Event(props: {
   room: Room;
-  id: number;
+  count: number;
   show: boolean;
   title: string;
   message: string;
 }) {
-  const { unFreeze, freeze } = useGame();
-  const { room, id, message, title, show } = props;
-  useEffect(() => {
-    freeze();
-  }, []);
+  const { unFreeze } = useGame();
+  const { room, count, message, title, show } = props;
+
   return (
     <div>
       <div className={show ? "visibleEvent" : "hiddenEvent"}>
         <div className="eventHeaderSection">
-          <h1>{title}</h1>
+          <h1>{title + count}</h1>
         </div>
         <div className="eventTextSection">
           <p>{message}</p>
@@ -28,7 +26,7 @@ export function Event(props: {
         <div className="eventButtonSection">
           <button
             onClick={() => {
-              room.eventHandler.hideEvent(id);
+              room.eventHandler.hideEvent(count);
               unFreeze();
             }}
             className="eventButton"

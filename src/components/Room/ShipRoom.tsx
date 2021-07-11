@@ -2,7 +2,7 @@ import React from "react";
 import "./ShipRoom.css";
 import { useState } from "react";
 import RoomSettings from "./RoomSettings";
-import { Room, Event } from "controller";
+import { Room, EventWithCount } from "controller";
 import { Event as EventComponent } from "../Event/Event";
 import { useGame } from "@services";
 interface RoomProps {
@@ -61,7 +61,7 @@ function dangerLevel(failureRate: number) {
   }
 }
 
-function Events(props: { events: Event[]; room: Room }) {
+function Events(props: { events: EventWithCount[]; room: Room }) {
   const { freeze } = useGame();
   const { events, room } = props;
   return (
@@ -70,7 +70,7 @@ function Events(props: { events: Event[]; room: Room }) {
         <div
           key={"EventShow" + room.name + i}
           onClick={() => {
-            room.eventHandler.showEvent(e.id);
+            room.eventHandler.showEvent(e.count);
             freeze();
           }}
         >

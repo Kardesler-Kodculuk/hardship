@@ -1,7 +1,7 @@
 interface resource {
-  total: number;
-  change: number;
-  limit: number;
+  total: number
+  change: number
+  limit: number
 }
 
 export type states = {
@@ -21,7 +21,7 @@ class Game {
       food: { total: 0.0, change: 10, limit: 1000 },
       sanity: { total: 0.0, change: 10, limit: 1000 },
       progress: { total: 0.0, change: 10, limit: 1000 },
-    };
+    }
   }
 
   /**
@@ -39,15 +39,15 @@ class Game {
   gameLoop(deltaTime: number) {
     for (let key in this.resources) {
       this.resources[key as keyof states].total +=
-        this.resources[key as keyof states].change * deltaTime;
+        this.resources[key as keyof states].change * deltaTime
       if (
         this.resources[key as keyof states].total >=
         this.resources[key as keyof states].limit
       ) {
         this.resources[key as keyof states].total =
-          this.resources[key as keyof states].limit;
+          this.resources[key as keyof states].limit
       } else if (this.resources[key as keyof states].total <= 0) {
-        this.resources[key as keyof states].total = 0;
+        this.resources[key as keyof states].total = 0
       }
     }
   }
