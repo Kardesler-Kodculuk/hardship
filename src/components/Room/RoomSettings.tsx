@@ -43,6 +43,7 @@ export default function RoomSettings(props: RoomSettingsProps) {
         {[...Array(room.maxStaffCount)].map((_, i) => {
           return (
             <img
+              key={"image" + room.name + i}
               alt="staffImages"
               className={
                 i < room.staffCount ? `staffImage` : "dimmedStaffImage"

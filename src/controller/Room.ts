@@ -1,6 +1,6 @@
 import Events, { Event } from "./Events"
 
-export class Room {
+export class Room{
   eventHandler: Events
   description: string
   minStaffCount: number

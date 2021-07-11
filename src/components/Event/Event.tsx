@@ -1,21 +1,24 @@
+import { Room } from "controller";
 import { useGame } from "@services";
 import { useState } from "react";
 import "./Event.css";
+import { useEffect } from "react";
 
-export function Event(props: { title: string; message: string }) {
-  const { unFreeze } = useGame();
-  const { message, title } = props;
-  const [visible, setVisible] = useState(true);
+export function Event(props: {
+  room: Room;
+  id: number;
+  show: boolean;
+  title: string;
+  message: string;
+}) {
+  const { unFreeze, freeze } = useGame();
+  const { room, id, message, title, show } = props;
+  useEffect(() => {
+    freeze();
+  }, []);
   return (
     <div>
-      <div
-        onClick={() => {
-          setVisible(true);
-        }}
-      >
-        <h1>{title}</h1>
-      </div>
-      <div className={visible ? "visibleEvent" : "hiddenEvent"}>
+      <div className={show ? "visibleEvent" : "hiddenEvent"}>
         <div className="eventHeaderSection">
           <h1>{title}</h1>
         </div>
@@ -25,8 +28,8 @@ export function Event(props: { title: string; message: string }) {
         <div className="eventButtonSection">
           <button
             onClick={() => {
+              room.eventHandler.hideEvent(id);
               unFreeze();
-              setVisible(false);
             }}
             className="eventButton"
           >

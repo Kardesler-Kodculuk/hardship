@@ -4,6 +4,7 @@ import { useState } from "react";
 import RoomSettings from "./RoomSettings";
 import { Room, Event } from "controller";
 import { Event as EventComponent } from "../Event/Event";
+import { useGame } from "@services";
 interface RoomProps {
   room: Room;
 }
@@ -44,7 +45,7 @@ export default function ShipRoom(props: RoomProps) {
           X
         </button>
         <RoomSettings room={room} />
-        <Events events={room.eventHandler.currentEvents} />
+        <Events events={room.eventHandler.currentEvents} room={room} />
       </div>
     </div>
   );
@@ -60,12 +61,21 @@ function dangerLevel(failureRate: number) {
   }
 }
 
-function Events(props: { events: Event[] }) {
-  const { events } = props;
+function Events(props: { events: Event[]; room: Room }) {
+  const { freeze } = useGame();
+  const { events, room } = props;
   return (
     <div>
-      {events.map((e) => (
-        <EventComponent title={e.title} message={e.description} />
+      {events.map((e, i) => (
+        <div
+          key={"EventShow" + room.name + i}
+          onClick={() => {
+            room.eventHandler.showEvent(e.id);
+            freeze();
+          }}
+        >
+          <h1>{e.title}</h1>
+        </div>
       ))}
     </div>
   );

@@ -3,6 +3,8 @@
 }
 
 .visibleEvent {
+  opacity: 1;
+  height: 100;
   position: absolute;
   z-index: 7;
   display: flex;
