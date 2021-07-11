@@ -74,7 +74,7 @@ function ResourceKey(props: ResourceBarProps) {
       </div>
       <div className="deadCount">
         <img src="/assets/images/icons/grave.svg" className="barIcon"></img>
-        <p> 25 </p>
+        <p> {gameManager.deadCount} </p>
       </div>
     </div>
   );
