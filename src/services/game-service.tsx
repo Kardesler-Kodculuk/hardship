@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 interface Game {
   freezed: boolean;
@@ -15,13 +16,30 @@ interface GameProviderProps {
 export const GameProvider = (props: GameProviderProps) => {
   const { children } = props;
   const [freezed, setFreeze] = React.useState(true);
+  const [lock, setLock] = React.useState(1);
+
+  useEffect(() => {
+    console.log(lock);
+    if (lock === 0) {
+      setFreeze(false);
+    } else {
+      setFreeze(true);
+    }
+  }, [lock]);
 
   const freeze = () => {
-    setFreeze(true);
+    let f = lock + 1;
+    console.log(f);
+    setLock(f);
   };
 
   const unFreeze = () => {
-    setFreeze(false);
+    let f = lock - 1;
+    if (f >= 0) {
+      setLock(f);
+    } else {
+      throw new Error("You can not unfreeze, continuing game");
+    }
   };
 
   const value = {
@@ -34,5 +52,9 @@ export const GameProvider = (props: GameProviderProps) => {
 };
 
 export const useGame = () => {
-  return React.useContext(GameContext);
+  const gameContext = React.useContext(GameContext);
+  if (gameContext === null) {
+    throw new Error("Game context is not provided");
+  }
+  return gameContext;
 };

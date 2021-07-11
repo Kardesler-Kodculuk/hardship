@@ -15,21 +15,23 @@ function fireEngines(background: React.MutableRefObject<null>) {
 
 export default function GamePage() {
   const [tick, setTick] = React.useState(false);
-  const game = useGame();
+  const { freezed, freeze } = useGame();
   const background = React.useRef(null);
+
   React.useEffect(() => {
-    if (!game?.freezed) {
+    if (!freezed) {
       gameManager.gameLoop(0.2);
       setTimeout(() => setTick((previousTick) => !previousTick), 200);
       if (
         gameManager.resources.progress.total >=
         gameManager.resources.progress.limit
       ) {
-        useGame()?.freeze();
+        freeze();
         fireEngines(background);
       }
     }
-  }, [tick, game?.freezed]);
+  }, [tick, freezed, freeze]);
+
   return (
     <div className="gameWindow">
       <img

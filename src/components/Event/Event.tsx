@@ -1,31 +1,38 @@
+import { useGame } from "@services";
 import { useState } from "react";
 import "./Event.css";
 
-export function Event(props: {
-  setIsFrozen: React.Dispatch<React.SetStateAction<boolean>>;
-  title: string;
-  message: string;
-}) {
-  const { setIsFrozen, message, title } = props;
+export function Event(props: { title: string; message: string }) {
+  const { unFreeze } = useGame();
+  const { message, title } = props;
   const [visible, setVisible] = useState(true);
   return (
-    <div className={visible ? "visibleEvent" : "hiddenEvent"}>
-      <div className="eventHeaderSection">
+    <div>
+      <div
+        onClick={() => {
+          setVisible(true);
+        }}
+      >
         <h1>{title}</h1>
       </div>
-      <div className="eventTextSection">
-        <p>{message}</p>
-      </div>
-      <div className="eventButtonSection">
-        <button
-          onClick={() => {
-            setIsFrozen(false);
-            setVisible(false);
-          }}
-          className="eventButton"
-        >
-          Dikkat Et!
-        </button>
+      <div className={visible ? "visibleEvent" : "hiddenEvent"}>
+        <div className="eventHeaderSection">
+          <h1>{title}</h1>
+        </div>
+        <div className="eventTextSection">
+          <p>{message}</p>
+        </div>
+        <div className="eventButtonSection">
+          <button
+            onClick={() => {
+              unFreeze();
+              setVisible(false);
+            }}
+            className="eventButton"
+          >
+            Kapat!
+          </button>
+        </div>
       </div>
     </div>
   );
