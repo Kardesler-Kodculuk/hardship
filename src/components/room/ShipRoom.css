@@ -1,12 +1,12 @@
 .room {
   filter: brightness(92%);
-  padding: 2px;
   margin-left: 4.2px;
   margin-right: 4.2px;
+  border: black solid thick;
   border-radius: 5px;
   width: 250px;
   height: 180px;
-  transition: all 0.1s ease; 
+  transition: all 0.1s ease;
 }
 
 .room:hover {
@@ -18,14 +18,14 @@
   z-index: 5;
   position: absolute;
   filter: brightness(15%);
-  margin:auto;
+  margin: auto;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
   width: 900px;
-  height:600px;
-  transition: all 0.4s ease; 
+  height: 600px;
+  transition: all 0.4s ease;
 }
 
 .hiddenPanel {
@@ -40,9 +40,9 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 25px;
-  margin:auto;
+  margin: auto;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -52,7 +52,7 @@
   padding: 5px;
 }
 
-.settingsClose{
+.settingsClose {
   color: black;
   display: flex;
   background-color: rgb(250, 0, 0);
@@ -60,9 +60,8 @@
   margin-left: auto;
   margin-top: 5px;
   border-radius: 5px;
-  
 }
-.settingsClose:hover{
+.settingsClose:hover {
   color: white;
   background-color: rgb(199, 55, 55);
 }

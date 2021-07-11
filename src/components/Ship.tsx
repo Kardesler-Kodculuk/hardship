@@ -7,9 +7,11 @@ export function Ship() {
   return (
     <div className="shipWrapper">
       <div className="Ship">
-        {rooms.map((room, index) => {
-          return <ShipRoom key={"shipRoom" + index} room={room} />;
-        })}
+        <div className="ShipRooms">
+          {rooms.map((room, index) => {
+            return <ShipRoom key={"shipRoom" + index} room={room} />;
+          })}
+        </div>
       </div>
     </div>
   );

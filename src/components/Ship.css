@@ -1,13 +1,70 @@
 .Ship {
-  background-color: rgb(17, 19, 27);
-  padding: 35px;
+  padding: 60px;
   position: relative;
+  overflow-x: visible;
   border-top-right-radius: 20px;
+
   /*  border-right: rgb(40, 0, 0) thick solid; */
-  background-size: 6%;
+}
+
+.shipWrapper {
+  background: url("../assets/shipbg.svg") 0 0 no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+.Ship h1 {
+  font-family: "VT323";
+}
+
+.shipTitle {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.shipTopDecorator {
+  margin-bottom: 0px;
+  width: 80%;
+  text-align: left;
+  position: absolute;
+  font-size: 0.5em;
+  padding-left: 0.5em;
+  padding-right: 3em;
+  background-color: black;
+  color: green;
+  left: 0.5em;
+  top: 0.2em;
+}
+
+@keyframes cursorflicker {
+  0% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.shipTopDecorator h1::after {
+  animation: cursorflicker 2s linear infinite;
+  content: "  |";
+}
+
+.ShipRooms {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   row-gap: 60px;
+}
+
+.Ship::after {
+  position: absolute;
+  z-index: -1;
+  top: -75%;
+  left: -40%;
+  content: "";
 }
 
 /**

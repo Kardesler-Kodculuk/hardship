@@ -16,7 +16,7 @@ export default function ShipRoom(props: RoomProps) {
   const [select, setSelect] = useState(false);
   return (
     <div
-      className={select ? "" : "room"}
+      className={select ? "" : ""}
       onClick={() => {
         if (!select) {
           setSelect(true);
