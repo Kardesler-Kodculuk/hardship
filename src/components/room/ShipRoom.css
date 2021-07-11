@@ -1,4 +1,5 @@
 .room {
+  filter: brightness(92%);
   padding: 2px;
   margin-left: 4.2px;
   margin-right: 4.2px;
@@ -9,10 +10,12 @@
 }
 
 .room:hover {
+  filter: brightness(108%);
   transform: scale(1.03);
 }
 
 .selectedRoom {
+  z-index: 5;
   position: absolute;
   filter: brightness(15%);
   margin:auto;
@@ -21,6 +24,7 @@
   transform: translate(-50%, -50%);
   border-radius: 10px;
   width: 900px;
+  height:600px;
   transition: all 0.4s ease; 
 }
 
@@ -31,6 +35,8 @@
 }
 
 .settingsPanel {
+  filter: brightness(120%);
+  z-index: 6;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -63,9 +69,12 @@
   background-color: rgb(199, 55, 55);
 }
 
-.settings {
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: auto;
-  margin-bottom: auto;
+.staffImage {
+  filter: brightness(260%);
+  width: 23px;
+}
+
+.dimmedStaffImage {
+  width: 20px;
+  filter: brightness(40%);
 }

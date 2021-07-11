@@ -1,0 +1,43 @@
+.settings {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+.staffButton {
+  border-radius: 6px;
+  font-size: 20px;
+  width: 30px;
+  height: 25px;
+  border: none;
+  padding: 2px;
+  margin: 2px;
+}
+
+.staffButton:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.addStaff{
+  color: black;
+  background-color: rgb(53, 45, 168);
+}
+
+.addStaff:hover{
+  background-color: rgb(66, 58, 179);
+}
+
+.removeStaff{
+  color: black;
+  background-color: rgb(250, 0, 0);
+  
+}
+.removeStaff:hover{
+  background-color: rgb(199, 55, 55);
+}
+
+.dimmedStaffImage {
+  filter: brightness(20½);
+}
