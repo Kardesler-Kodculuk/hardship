@@ -2,6 +2,7 @@ interface resource {
   total: number;
   change: number;
   limit: number;
+  name: string;
 }
 
 export type states = {
@@ -17,11 +18,11 @@ class Game {
   deadCount: number;
   constructor() {
     this.resources = {
-      energy: { total: 500.0, change: 10, limit: 1000 },
-      humans: { total: 1.0, change: 10, limit: 250 },
-      food: { total: 500.0, change: 10, limit: 1000 },
-      sanity: { total: 500.0, change: 10, limit: 1000 },
-      progress: { total: 0.0, change: 0, limit: 1000 },
+      energy: { total: 500.0, change: 10, limit: 1000, name: "Enerji" },
+      humans: { total: 1.0, change: 10, limit: 250, name: "İnsan" },
+      food: { total: 500.0, change: 10, limit: 1000, name: "Yemek" },
+      sanity: { total: 500.0, change: 10, limit: 1000, name: "Akıl Sağlığı" },
+      progress: { total: 0.0, change: 0, limit: 1000, name: "İlerleme" },
     };
     this.deadCount = 0;
   }

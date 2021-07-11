@@ -3,7 +3,9 @@
   border-bottom: white thin solid;
   border-left: white thin solid;
   border-right: white thin solid;
-  margin: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   width: 252px;
   height: 20px;
   border-bottom-left-radius: 5px;
@@ -121,4 +123,39 @@
 
 .deadCount p {
   margin: 0;
+}
+
+.barInfoWrapper {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.barInfo {
+  margin-left: 5px;
+  background-color: rgb(20, 20, 20);
+  display: none;
+  z-index: 10;
+  padding-left: 0.5em;
+  gap: 0.5em;
+  color: white;
+  height: 25px;
+  min-width: 65px;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 7px;
+}
+
+.barWrapper {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: auto;
+}
+
+.barWrapper:hover .barInfo {
+  display: flex;
 }

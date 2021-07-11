@@ -6,6 +6,7 @@ interface ResourceBarProps {
   resourceName: string;
   totalResources: number;
   resourceLimit: number;
+  info?: { name: string | JSX.Element; value: string }[];
 }
 
 function getBgColourForResource(resourceName: string): string {
@@ -25,22 +26,33 @@ function getBgColourForResource(resourceName: string): string {
 
 function ResourceBar(props: ResourceBarProps) {
   return (
-    <div className={props.resourceName + "ResourceBar"}>
-      <img
-        src={`/assets/images/icons/${props.resourceName}.svg`}
-        className="barIcon"
-      ></img>
-      <div className="barBackground">
-        <div
-          className="barForeground"
-          style={{
-            width:
-              (props.totalResources / props.resourceLimit) *
-                (props.resourceName !== "progress" ? 250 : 480) +
-              "px",
-            backgroundColor: getBgColourForResource(props.resourceName),
-          }}
-        ></div>
+    <div className="barWrapper">
+      <div className={props.resourceName + "ResourceBar"}>
+        <img
+          src={`/assets/images/icons/${props.resourceName}.svg`}
+          className="barIcon"
+        ></img>
+        <div className="barBackground">
+          <div
+            className="barForeground"
+            style={{
+              width:
+                (props.totalResources / props.resourceLimit) *
+                  (props.resourceName !== "progress" ? 250 : 480) +
+                "px",
+              backgroundColor: getBgColourForResource(props.resourceName),
+            }}
+          ></div>
+        </div>
+      </div>
+      <div className="barInfoWrapper">
+        {props.info?.map((e) => (
+          <div className="barInfo">
+            <p>
+              <b>{e.name}</b> {e.value}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -83,6 +95,18 @@ export default function Resources() {
               resourceLimit={
                 gameManager.resources[element as keyof states].limit
               }
+              info={[
+                {
+                  name: "",
+                  value: gameManager.resources[element as keyof states].name,
+                },
+                {
+                  name: "Değişim: ",
+                  value: `${Math.floor(
+                    gameManager.resources[element as keyof states].change
+                  )}`,
+                },
+              ]}
             />
           );
         })}

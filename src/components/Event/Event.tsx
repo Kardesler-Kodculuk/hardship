@@ -28,7 +28,7 @@ export function Event(props: {
           <p>{message}</p>
           <h3 style={{ fontFamily: "VT323", color: "green" }}>Effects:</h3>
           {effects.map((e) => {
-            if ((e.type = "continuous")) {
+            if (e.type === "continuous") {
               return (
                 <p>
                   {"Lowers "}
@@ -40,7 +40,7 @@ export function Event(props: {
             } else {
               return (
                 <p>
-                  {"Immediate loss of "}
+                  {e.value > 0 ? "Increase of " : "Immediate loss of "}
                   <b>{e.value}</b>
                   {" to "}
                   <b>{e.to}</b>
