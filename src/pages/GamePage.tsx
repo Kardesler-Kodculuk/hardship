@@ -46,7 +46,7 @@ export default function GamePage() {
         fireEngines(background, goToWinScreen);
       }
     }
-  }, [tick, freezed]);
+  }, [tick, freezed, freeze]);
   React.useEffect(() => {
     if (
       freezed &&
