@@ -17,10 +17,11 @@ interface GameProviderProps {
 export const GameProvider = (props: GameProviderProps) => {
   const { children } = props;
   const [freezed, setFreeze] = React.useState(true);
-  const [lock, setLock] = React.useState<number[]>([1]);
+  const [lock, setLock] = React.useState<number>(1);
 
   useEffect(() => {
-    if (lock.length === 0) {
+    console.log(lock);
+    if (lock === 0) {
       setFreeze(false);
     } else {
       setFreeze(true);
@@ -28,25 +29,25 @@ export const GameProvider = (props: GameProviderProps) => {
   }, [lock]);
 
   const freeze = () => {
-    setLock([1, ...lock]);
+    setLock(lock + 1);
   };
 
   const unFreeze = () => {
-    if (lock.length > 0) {
-      let f = [...lock];
-      f.pop();
-      setLock(f);
+    console.log("asdasd");
+    let f = lock;
+    if (f > 0) {
+      setLock(f - 1);
     } else {
     }
   };
 
   const fireEvents = () => {
     rooms.forEach((room) => {
-      if (room.failureRate > Math.floor(Math.random() * 100)) {
-        if (room.fireEvent()) {
-          console.log(room.name, room.eventHandler.currentEventCount());
-          freeze();
-        }
+      if (
+        room.failureRate > Math.floor(Math.random() * 100) &&
+        room.fireEvent()
+      ) {
+        freeze();
       }
     });
   };

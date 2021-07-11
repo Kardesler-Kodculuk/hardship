@@ -56,6 +56,7 @@ class Game {
    * Return true if any resources fell to or below zero.
    */
   anyZero() {
+    return false
     return (
       this.resources.energy.total <= 0 ||
       this.resources.food.total <= 0 ||
