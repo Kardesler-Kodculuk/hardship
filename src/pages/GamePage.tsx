@@ -6,10 +6,13 @@ import { Ship } from "@components";
 
 export default function GamePage() {
   const [tick, setTick] = React.useState(false);
+  const [isFrozen, setIsFrozen] = React.useState(true);
   React.useEffect(() => {
-    gameManager.gameLoop(0.2);
-    setTimeout(() => setTick((previousTick) => !previousTick), 200);
-  }, [tick]);
+    if (!isFrozen) {
+      gameManager.gameLoop(0.2);
+      setTimeout(() => setTick((previousTick) => !previousTick), 200);
+    }
+  }, [tick, isFrozen]);
   return (
     <div className="gameWindow">
       <img
@@ -19,7 +22,7 @@ export default function GamePage() {
       ></img>
       <Resources />
       <Ship />
-      <WelcomeMessage />
+      <WelcomeMessage setIsFrozen={setIsFrozen} />
     </div>
   );
 }
