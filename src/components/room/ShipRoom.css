@@ -62,19 +62,25 @@
   border-radius: 5px;
   
 }
-
-
 .settingsClose:hover{
   color: white;
   background-color: rgb(199, 55, 55);
 }
 
-.staffImage {
-  filter: brightness(260%);
-  width: 23px;
+.staffCount {
+  margin-top: 7px;
+  width: 15px;
+  filter: brightness(110%);
 }
 
-.dimmedStaffImage {
-  width: 20px;
-  filter: brightness(40%);
+.room:hover .staffCount {
+  margin-top: 7px;
+  width: 18px;
+  filter: brightness(290%);
+}
+
+.warnings {
+  margin-right: 20px;
+  margin-left: auto;
+  width: 15px;
 }

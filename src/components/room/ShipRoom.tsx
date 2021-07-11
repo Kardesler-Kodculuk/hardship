@@ -28,7 +28,16 @@ export default function ShipRoom(props: RoomProps) {
         src={`/assets/images/rooms/${room.name}.png`}
         alt={`${room.title} resmi.`}
       ></img>
-
+      {[...Array(room.staffCount)].map((_, i) => {
+        return (
+          <img
+            alt="staffImages"
+            className="staffCount"
+            src={`/assets/images/icons/humans.svg`}
+          />
+        );
+      })}
+      <RenderWarning failureRate={room.failureRate} />
       <div className={select ? "settingsPanel" : "hiddenPanel"}>
         <button className="settingsClose" onClick={() => setSelect(false)}>
           X
@@ -38,4 +47,27 @@ export default function ShipRoom(props: RoomProps) {
       </div>
     </div>
   );
+}
+
+function RenderWarning(props: { failureRate: number }) {
+  const { failureRate } = props;
+  if (failureRate >= 20) {
+    return (
+      <img
+        alt="staffImages"
+        className="warnings"
+        src={`/assets/images/rooms/warning.png`}
+      />
+    );
+  } else if (failureRate >= 70) {
+    return (
+      <img
+        alt="staffImages"
+        className="warnings"
+        src={`/assets/images/rooms/danger.png`}
+      />
+    );
+  } else {
+    return null;
+  }
 }
