@@ -3,3 +3,4 @@ export { gameManager }
 export type { states }
 export * from "./RoomCreator"
 export * from "./Room"
+export * from "./Events"

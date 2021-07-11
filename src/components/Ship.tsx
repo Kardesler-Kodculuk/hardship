@@ -1,6 +1,6 @@
 import { rooms } from "@controller";
 import React from "react";
-import ShipRoom from "./room/ShipRoom";
+import ShipRoom from "./Room/ShipRoom";
 import "./Ship.css";
 
 export function Ship() {
