@@ -19,7 +19,6 @@ export const GameProvider = (props: GameProviderProps) => {
   const [lock, setLock] = React.useState(1);
 
   useEffect(() => {
-    console.log(lock);
     if (lock === 0) {
       setFreeze(false);
     } else {
@@ -29,7 +28,6 @@ export const GameProvider = (props: GameProviderProps) => {
 
   const freeze = () => {
     let f = lock + 1;
-    console.log(f);
     setLock(f);
   };
 
@@ -38,7 +36,7 @@ export const GameProvider = (props: GameProviderProps) => {
     if (f >= 0) {
       setLock(f);
     } else {
-      throw new Error("You can not unfreeze, continuing game");
+      throw new Error("You can not unfreeze continuing game");
     }
   };
 

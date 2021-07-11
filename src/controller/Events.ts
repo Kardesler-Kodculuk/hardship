@@ -16,11 +16,11 @@ export interface Effect {
 
 export interface Event {
   id: number
+  show: boolean
   title: string
   description: string
   effects: Effect[]
 }
-
 export default class Events {
   events: Event[]
   currentEvents: Event[]
@@ -69,8 +69,35 @@ export default class Events {
   currentEventCount(): number {
     return this.currentEffects.length
   }
+
+  showEvent(id: number) {
+    const e = this.currentEvents.find(e => e.id === id)
+    if (e) {
+      e.show = true
+    } else {
+      throw new Error("Event not found")
+    }
+  }
+
+  hideEvent(id: number) {
+    const e = this.currentEvents.find(e => e.id === id)
+    if (e) {
+      e.show = false
+    } else {
+      throw new Error("Event not found")
+    }
+  }
+
+  isShown(id: number): boolean {
+    const e = this.currentEvents.find(e => e.id === id)
+    if (e) {
+      return e.show
+    } else {
+      throw new Error("Event not found")
+    }
+  }
 }
 
 export function createEvent(id: number, title: string, description: string, ...effects: Effect[]): Event {
-  return { id, description, title, effects }
+  return { id, description, title, effects, show: true }
 }
