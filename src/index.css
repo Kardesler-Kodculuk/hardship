@@ -54,7 +54,8 @@ em {
 }
 
 html,
-button {
+button,
+a {
   cursor: url("assets/cursor.svg"), auto;
 }
 
@@ -77,4 +78,22 @@ code {
 #root {
   height: 100%;
   width: 100%;
+}
+
+.hover {
+  display: none;
+}
+
+div:hover > .hover {
+  background-color: rgb(20, 20, 20);
+  width: 200px;
+  height: 70px;
+  position: absolute;
+  margin-left: 300px;
+  margin-top: 20px;
+  display: flex;
+}
+
+div:hover > .hover p {
+  padding-top: 10px;
 }

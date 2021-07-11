@@ -1,4 +1,4 @@
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { MemoryRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { GamePage, MainMenu } from "@pages";
 import { GameProvider } from "@services";
@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <GameProvider>
-        <HashRouter>
+        <MemoryRouter>
           <Switch>
             <Route path="/" exact>
               <MainMenu />
@@ -15,7 +15,7 @@ function App() {
               <GamePage />
             </Route>
           </Switch>
-        </HashRouter>
+        </MemoryRouter>
       </GameProvider>
     </div>
   );

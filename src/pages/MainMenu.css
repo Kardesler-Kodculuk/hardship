@@ -82,11 +82,12 @@
 
 .mainMenuOptions ul {
   opacity: 0;
+  list-style: none;
   animation: existence 2s ease forwards;
   animation-delay: 1s;
 }
 
-.mainMenuOptions a {
+.mainMenuOptions li {
   font-size: 40px;
   text-decoration: none;
   color: white;
@@ -94,7 +95,7 @@
   transition: text-shadow 100ms ease;
 }
 
-.mainMenuOptions a:hover {
+.mainMenuOptions li:hover {
   text-shadow: rgb(0, 0, 255) 0 0 20px;
 }
 

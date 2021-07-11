@@ -70,11 +70,17 @@ function ResourceKey(props: ResourceBarProps) {
           className={`resourceImage`}
           src={`/assets/images/icons/${props.resourceName}.svg`}
         />
+        <div className="hover">
+          <p>Halihazırda kullanılmayan mürettebat sayısı.</p>
+        </div>
         {Math.round(props.totalResources)}/{props.resourceLimit}
       </div>
       <div className="deadCount">
         <img src="/assets/images/icons/grave.svg" className="barIcon"></img>
-        <p> 25 </p>
+        <p> {gameManager.deadCount} </p>
+        <div className="hover">
+          <p>Gözetiminizde vefat etmiş mürettebat sayısı.</p>
+        </div>
       </div>
     </div>
   );
