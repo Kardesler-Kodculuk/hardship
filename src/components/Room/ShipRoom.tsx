@@ -62,5 +62,11 @@ function dangerLevel(failureRate: number) {
 
 function Events(props: { events: Event[] }) {
   const { events } = props;
-  return <div>{events.map((e) => null)}</div>;
+  return (
+    <div>
+      {events.map((e) => (
+        <EventComponent title={e.title} message={e.description} />
+      ))}
+    </div>
+  );
 }
