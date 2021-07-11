@@ -1,5 +1,5 @@
 import React from "react";
-import { Resources } from "@components";
+import { Resources, WelcomeMessage } from "@components";
 import { gameManager } from "@controller";
 import "./GamePage.css";
 import { Ship } from "@components";
@@ -19,6 +19,7 @@ export default function GamePage() {
       ></img>
       <Resources />
       <Ship />
+      <WelcomeMessage />
     </div>
   );
 }

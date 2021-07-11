@@ -1,11 +1,56 @@
 @font-face {
   font-family: "Tourney";
-  src: url("assets/Tourney-SemiBold.ttf");
+  src: url("assets/fonts/Tourney-SemiBold.ttf");
 }
 
 @font-face {
   font-family: "Roboto Slab";
-  src: url("assets/RobotoSlab-Regular.ttf");
+  src: url("assets/fonts/RobotoSlab-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-Italic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "VT323";
+  src: url("assets/fonts/VT323-Regular.ttf");
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+em {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: rgb(240, 0, 0);
 }
 
 body {
