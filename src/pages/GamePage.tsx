@@ -53,7 +53,10 @@ export default function GamePage() {
       background.current?.classList.contains("spaceBackgroundAnimated")
     ) {
       background.current?.classList.remove("spaceBackgroundAnimated");
-    } else {
+    } else if (
+      !freezed &&
+      !background.current?.classList.contains("spaceBackgroundAnimated")
+    ) {
       background.current?.classList.add("spaceBackgroundAnimated");
     }
   }, [freezed, freeze]);
