@@ -17,7 +17,7 @@ export default function ShipRoom(props: RoomProps) {
   const [select, setSelect] = useState(false);
   return (
     <div
-      className={select ? "" : ""}
+      className={select ? "" : "room"}
       onClick={() => {
         if (!select) {
           setSelect(true);
@@ -31,15 +31,18 @@ export default function ShipRoom(props: RoomProps) {
         src={`/assets/images/rooms/${room.name}.png`}
         alt={`${room.title} resmi.`}
       ></img>
-      {[...Array(room.staffCount)].map((_, i) => {
-        return (
-          <img
-            alt="staffImages"
-            className="staffCount"
-            src={`/assets/images/icons/humans.svg`}
-          />
-        );
-      })}
+      {select
+        ? null
+        : [...Array(room.staffCount)].map((_, i) => {
+            return (
+              <img
+                alt="staffImages"
+                className="staffCount"
+                src={`/assets/images/icons/humans.svg`}
+              />
+            );
+          })}
+
       <div className={select ? "settingsPanel" : "hiddenPanel"}>
         <button className="settingsClose" onClick={() => setSelect(false)}>
           X
@@ -65,9 +68,10 @@ function Events(props: { events: EventWithCount[]; room: Room }) {
   const { freeze } = useGame();
   const { events, room } = props;
   return (
-    <div>
+    <div className="eventContainer">
       {events.map((e, i) => (
         <div
+          className="eventButton"
           key={"EventShow" + room.name + i}
           onClick={() => {
             room.eventHandler.showEvent(e.count);

@@ -20,7 +20,6 @@ export const GameProvider = (props: GameProviderProps) => {
   const [lock, setLock] = React.useState<number>(1);
 
   useEffect(() => {
-    console.log(lock);
     if (lock === 0) {
       setFreeze(false);
     } else {
@@ -29,14 +28,12 @@ export const GameProvider = (props: GameProviderProps) => {
   }, [lock]);
 
   const freeze = () => {
-    setLock(lock + 1);
+    setLock((lock) => lock + 1);
   };
 
   const unFreeze = () => {
-    console.log("asdasd");
-    let f = lock;
-    if (f > 0) {
-      setLock(f - 1);
+    if (lock > 0) {
+      setLock((lock) => lock - 1);
     } else {
     }
   };

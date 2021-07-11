@@ -48,6 +48,7 @@ function Events(props: { room: Room }) {
               count={e.count}
               show={e.show}
               room={room}
+              effects={e.effects}
             />
           </div>
         );
