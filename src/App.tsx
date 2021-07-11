@@ -1,5 +1,3 @@
-import React from "react";
-import { Resources } from "@components";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { GamePage, MainMenu } from "@pages";

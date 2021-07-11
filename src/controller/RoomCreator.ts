@@ -1,5 +1,5 @@
-import { createEvent, Event } from "./Events"
-import { Room } from "./Room"
+import { createEvent, Event } from "./Events";
+import { Room } from "./Room";
 
 const GeneratorEvents: Event[] = [
   createEvent(
@@ -15,7 +15,7 @@ const GeneratorEvents: Event[] = [
     { to: "humans", type: "single", value: 10 },
     { to: "sanity", type: "single", value: -100 }
   ),
-]
+];
 
 const CafeteriaEvents: Event[] = [
   createEvent(
@@ -25,19 +25,19 @@ const CafeteriaEvents: Event[] = [
     { to: "sanity", type: "single", value: -100 },
     { to: "sanity", type: "continuous", value: 0.25 }
   ),
-]
+];
 
 const LivingAreaEvents: Event[] = [
   createEvent(
     3000,
     "Mistakes, Accidents",
     "A lot of sleepless people mean a lot of accidents.",
-    { to: "energy", type: "continuous", value: 0.05 },
-    { to: "food", type: "continuous", value: 0.05 },
-    { to: "progress", type: "continuous", value: 0.05 },
-    { to: "sanity", type: "continuous", value: 0.05 }
+    { to: "energy", type: "continuous", value: -0.05 },
+    { to: "food", type: "continuous", value: -0.05 },
+    { to: "progress", type: "continuous", value: -0.05 },
+    { to: "sanity", type: "continuous", value: -0.05 }
   ),
-]
+];
 
 const ControlDeckEvents: Event[] = [
   createEvent(
@@ -47,7 +47,7 @@ const ControlDeckEvents: Event[] = [
     { to: "progress", type: "single", value: -100 },
     { to: "sanity", type: "continuous", value: 0.25 }
   ),
-]
+];
 
 const ArmoryEvents: Event[] = [
   createEvent(
@@ -57,7 +57,7 @@ const ArmoryEvents: Event[] = [
     { to: "progress", type: "single", value: -100 },
     { to: "sanity", type: "continuous", value: 0.25 }
   ),
-]
+];
 const ColdRoomEvents: Event[] = [
   createEvent(
     4000,
@@ -66,38 +66,38 @@ const ColdRoomEvents: Event[] = [
     { to: "humans", type: "single", value: 2 },
     { to: "sanity", type: "continuous", value: 0.25 }
   ),
-]
+];
 
 const Generator = new Room(
   "generator",
   "Jenaretör",
   "Generates electricity",
   ...GeneratorEvents
-)
+);
 const Cafeteria = new Room(
   "cafeteria",
   "Kafeterya",
   "Generates food",
   ...CafeteriaEvents
-)
-const LivingArea = new Room("living", "Yatakhane", "", ...LivingAreaEvents)
-const ControlDeck = new Room("control", "Köprü", "", ...ControlDeckEvents)
+);
+const LivingArea = new Room("living", "Yatakhane", "", ...LivingAreaEvents);
+const ControlDeck = new Room("control", "Köprü", "", ...ControlDeckEvents);
 const Armory = new Room(
   "armory",
   "Cephanelik",
   "Defends the ship",
   ...ArmoryEvents
-)
+);
 const ColdRoom = new Room(
   "cold",
   "Soğuk Oda",
   "Stores frozen humans",
   ...ColdRoomEvents
-)
+);
 
-const rooms = [Generator, Cafeteria, LivingArea, ControlDeck, Armory, ColdRoom]
+const rooms = [Generator, Cafeteria, LivingArea, ControlDeck, Armory, ColdRoom];
 
-LivingArea.fireEvent()
+LivingArea.fireEvent();
 
 export {
   rooms,
@@ -107,7 +107,7 @@ export {
   ControlDeck,
   Armory,
   ColdRoom,
-}
+};
 export {
   GeneratorEvents,
   CafeteriaEvents,
@@ -115,4 +115,4 @@ export {
   ControlDeckEvents,
   ArmoryEvents,
   ColdRoomEvents,
-}
+};
