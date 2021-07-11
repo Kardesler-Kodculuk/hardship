@@ -5,7 +5,6 @@ import { useGame } from "@services";
 
 export function ColdRoomSettings() {
   const { wakeStaff } = useGame();
-  console.log(gameManager.resources.humans);
   return (
     <div className="settings">
       <div className="coldRoomControls">
