@@ -5,15 +5,15 @@ interface resource {
 }
 
 export type states = {
-  energy: resource;
-  sanity: resource;
-  food: resource;
-  humans: resource;
-  progress: resource;
-};
+  energy: resource
+  sanity: resource
+  food: resource
+  humans: resource
+  progress: resource
+}
 
 class Game {
-  resources: states;
+  resources: states
   constructor() {
     this.resources = {
       energy: { total: 500.0, change: 10, limit: 1000 },
@@ -21,7 +21,7 @@ class Game {
       food: { total: 500.0, change: 10, limit: 1000 },
       sanity: { total: 500.0, change: 10, limit: 1000 },
       progress: { total: 0.0, change: 0, limit: 1000 },
-    };
+    }
   }
 
   /**
@@ -29,10 +29,10 @@ class Game {
    * @param resourceChange
    */
   modifyResources(resourceChange: states) {
-    type s = keyof states;
+    type s = keyof states
     for (let key in this.resources) {
-      this.resources[key as s].total += resourceChange[key as s].total;
-      this.resources[key as s].change += resourceChange[key as s].change;
+      this.resources[key as s].total += resourceChange[key as s].total
+      this.resources[key as s].change += resourceChange[key as s].change
     }
   }
 
@@ -61,8 +61,8 @@ class Game {
       this.resources.food.total <= 0 ||
       this.resources.humans.total <= 0 ||
       this.resources.sanity.total <= 0
-    );
+    )
   }
 }
 
-export default new Game();
+export default new Game()

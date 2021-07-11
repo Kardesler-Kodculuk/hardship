@@ -90,7 +90,7 @@ export function GamePage() {
       let e = event + 1;
       setEvent(e);
     }
-  }, [tick, freezed, freeze, push]);
+  }, [tick, freezed, freeze]);
 
   React.useEffect(() => {
     if (
