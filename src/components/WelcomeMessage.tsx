@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import "./WelcomeMessage.css";
-
-export function WelcomeMessage(props: {
-  setIsFrozen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+import { useGame } from "@services";
+export function WelcomeMessage() {
+  const game = useGame();
   const [visible, setVisible] = useState(true);
   return (
     <div className={visible ? "visibleWelcome" : "hiddenWelcome"}>
@@ -30,7 +29,7 @@ export function WelcomeMessage(props: {
       <div className="welcomeMessageButtonSection">
         <button
           onClick={() => {
-            props.setIsFrozen(false);
+            game?.unFreeze();
             setVisible(false);
           }}
           className="welcomeMessageButton"
