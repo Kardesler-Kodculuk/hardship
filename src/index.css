@@ -53,6 +53,11 @@ em {
   color: rgb(240, 0, 0);
 }
 
+html,
+button {
+  cursor: url("assets/cursor.svg"), auto;
+}
+
 body {
   height: 100vh;
   width: 100vw;
