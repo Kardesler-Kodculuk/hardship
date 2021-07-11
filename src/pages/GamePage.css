@@ -14,9 +14,12 @@
 }
 
 .spaceBackground {
-  animation: slide 6s infinite linear;
   position: absolute;
   z-index: -1;
   left: 0;
   filter: brightness(0.2);
+}
+
+.spaceBackgroundAnimated {
+  animation: slide 6s infinite linear;
 }
