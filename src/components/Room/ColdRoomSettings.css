@@ -35,11 +35,5 @@
 }
 
 .wakeUpPassanger:disabled {
-  opacity: 0;
-}
-
-.wakeUpPassanger:disabled::after {
-  content: "Geriye yolcu kalmadı!";
-  opacity: 1;
-  color: white;
+  display: none;
 }

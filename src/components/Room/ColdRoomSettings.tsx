@@ -12,6 +12,12 @@ export function ColdRoomSettings() {
           Uyandığınız yolcular size mürettebat olarak katılacaklar, ancak dikkat
           edin, daha fazla mürettat iyi bir şey gibi görünse de,{" "}
           <em>daha fazla mürettebat daha fazla kaynak harcayacaktır.</em>
+          {gameManager.deadCount + gameManager.resources.humans.total >=
+          gameManager.resources.humans.limit ? (
+            <p>
+              <em>Soğuk odada uyuyan yolcu kalmadı.</em>
+            </p>
+          ) : null}
         </p>
         <button
           onClick={() => {
