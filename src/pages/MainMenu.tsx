@@ -55,18 +55,20 @@ export function MainMenu() {
         </header>
         <section className="mainMenuOptions">
           <ul>
-            <li title="New Game">
-              <Link to="/game">Oyuna Başla</Link>
+            <li
+              title="New Game"
+              onClick={() => {
+                history.push("/game");
+              }}
+            >
+              Oyuna Başla
             </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => {
-                  setHelpVisible(true);
-                }}
-              >
-                Hakkında
-              </a>
+            <li
+              onClick={() => {
+                setHelpVisible(true);
+              }}
+            >
+              Hakkında
             </li>
           </ul>
         </section>

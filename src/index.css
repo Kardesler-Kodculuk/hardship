@@ -54,7 +54,8 @@ em {
 }
 
 html,
-button {
+button,
+a {
   cursor: url("assets/cursor.svg"), auto;
 }
 
