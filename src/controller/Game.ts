@@ -1,19 +1,20 @@
 interface resource {
-  total: number
-  change: number
-  limit: number
+  total: number;
+  change: number;
+  limit: number;
 }
 
 export type states = {
-  energy: resource
-  sanity: resource
-  food: resource
-  humans: resource
-  progress: resource
-}
+  energy: resource;
+  sanity: resource;
+  food: resource;
+  humans: resource;
+  progress: resource;
+};
 
 class Game {
-  resources: states
+  resources: states;
+  deadCount: number;
   constructor() {
     this.resources = {
       energy: { total: 500.0, change: 10, limit: 1000 },
@@ -21,7 +22,8 @@ class Game {
       food: { total: 500.0, change: 10, limit: 1000 },
       sanity: { total: 500.0, change: 10, limit: 1000 },
       progress: { total: 0.0, change: 0, limit: 1000 },
-    }
+    };
+    this.deadCount = 0;
   }
 
   /**
@@ -29,25 +31,37 @@ class Game {
    * @param resourceChange
    */
   modifyResources(resourceChange: states) {
-    type s = keyof states
+    type s = keyof states;
     for (let key in this.resources) {
-      this.resources[key as s].total += resourceChange[key as s].total
-      this.resources[key as s].change += resourceChange[key as s].change
+      this.resources[key as s].total += resourceChange[key as s].total;
+      this.resources[key as s].change += resourceChange[key as s].change;
+      if (key == "humans" && resourceChange[key as s].total <= 0) {
+        this.deadCount -= resourceChange[key as s].total; // As we keep track of them.
+      }
     }
+  }
+
+  addHumans(humanCount: number) {
+    this.resources.humans.total += humanCount;
   }
 
   gameLoop(deltaTime: number) {
     for (let key in this.resources) {
+      if (key === "humans") {
+        continue; // Humans are not updated in the same way.
+      }
       this.resources[key as keyof states].total +=
-        this.resources[key as keyof states].change * deltaTime
+        (this.resources[key as keyof states].change -
+          0.01 * this.resources.humans.total) *
+        deltaTime;
       if (
         this.resources[key as keyof states].total >=
         this.resources[key as keyof states].limit
       ) {
         this.resources[key as keyof states].total =
-          this.resources[key as keyof states].limit
+          this.resources[key as keyof states].limit;
       } else if (this.resources[key as keyof states].total <= 0) {
-        this.resources[key as keyof states].total = 0
+        this.resources[key as keyof states].total = 0;
       }
     }
   }
@@ -56,14 +70,14 @@ class Game {
    * Return true if any resources fell to or below zero.
    */
   anyZero() {
-    return false
+    return false;
     return (
       this.resources.energy.total <= 0 ||
       this.resources.food.total <= 0 ||
       this.resources.humans.total <= 0 ||
       this.resources.sanity.total <= 0
-    )
+    );
   }
 }
 
-export default new Game()
+export default new Game();

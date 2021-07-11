@@ -1,0 +1,45 @@
+.coldRoomControls {
+  background-color: black;
+  padding: 20px;
+}
+.coldRoomWarning {
+  color: green;
+  text-align: left;
+  font-family: "VT323";
+  background-color: black;
+}
+
+.coldRoomWarning em {
+  font-family: "VT323";
+  font-weight: 400;
+}
+
+.wakeUpPassanger {
+  width: 100%;
+  border: none;
+  border-bottom: solid green thin;
+  border-top: solid green thin;
+  background-color: rgba(0, 255, 0, 0.25);
+  color: green;
+  font-size: 25px;
+  font-family: "VT323";
+}
+
+.wakeUpPassanger:hover {
+  background-color: rgba(0, 255, 0, 0.3);
+}
+
+.wakeUpPassanger:active {
+  background-color: green;
+  color: rgba(0, 255, 0, 0.25);
+}
+
+.wakeUpPassanger:disabled {
+  opacity: 0;
+}
+
+.wakeUpPassanger:disabled::after {
+  content: "Geriye yolcu kalmadı!";
+  opacity: 1;
+  color: white;
+}

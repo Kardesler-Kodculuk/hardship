@@ -5,6 +5,7 @@ import RoomSettings from "./RoomSettings";
 import { Room, EventWithCount } from "controller";
 import { Event as EventComponent } from "../Event/Event";
 import { useGame } from "@services";
+import { ColdRoomSettings } from "./ColdRoomSettings";
 interface RoomProps {
   room: Room;
 }
@@ -47,7 +48,11 @@ export default function ShipRoom(props: RoomProps) {
         <button className="settingsClose" onClick={() => setSelect(false)}>
           X
         </button>
-        <RoomSettings room={room} />
+        {room.name === "cold" ? (
+          <ColdRoomSettings />
+        ) : (
+          <RoomSettings room={room} />
+        )}
         <Events events={room.eventHandler.currentEvents} room={room} />
       </div>
     </div>
