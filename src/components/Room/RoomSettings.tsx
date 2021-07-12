@@ -21,6 +21,7 @@ export default function RoomSettings(props: RoomSettingsProps) {
     try {
       add();
       room.addStaff();
+      room.stopEvent();
     } catch (err) {
       console.log(err.message);
     }

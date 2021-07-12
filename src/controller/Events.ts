@@ -72,6 +72,8 @@ export default class Events {
     this.currentEffects.forEach(e => {
       Game.modifyResources(e)
     })
+    this.currentEvents = []
+    this.currentEffects = []
   }
 
   isEventPresent(): boolean {
