@@ -37,7 +37,9 @@ export default function ShipRoom(props: RoomProps) {
             : "shipRoomFailureRate " + dangerLevel(room.failureRate)
         }
       >
-        {room.failureRate}%
+        {room.name === "cold"
+          ? "Soğuk Oda"
+          : (room.failureRate >= 0 ? room.failureRate : 0) + "%"}
       </div>
       {select
         ? null

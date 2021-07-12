@@ -20,9 +20,10 @@ export function WelcomeMessage() {
         </p>
         <p>
           Kaynaklarınızı dikkatli kullanın, her odanın düzgün işlemesi için
-          mürettebata ihtiyacı var, ihtiyaç durumunda yeni mürettebat
-          uyandırabilirsiniz. Düzgün işlemeyen odalar yarardan çok zarara sebep
-          olabilirler.
+          mürettebata ihtiyacı var, odaların sistem hatası verme olasılığı
+          yanlarında yazacak, bu oran, odanın mürettebat gereksinimini
+          belirleyecek, soğuk odadaki uyku halinde bulunan yolcuları uyandırarak
+          yeni mürettebat edinebilirsiniz.
         </p>
         <p>İyi şanslar kaptan.</p>
       </div>
