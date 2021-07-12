@@ -7,6 +7,7 @@ import { useGame } from "@services";
 import anime from "animejs";
 import { useHistory } from "react-router";
 import { rollDie } from "@utils";
+import ReactAudioPlayer from "react-audio-player";
 
 function fireEngines(callback: () => void) {
   let target = document.getElementsByClassName("shipWrapper")[0];
@@ -112,6 +113,12 @@ export function GamePage() {
 
   return (
     <div className="gameWindow">
+      <ReactAudioPlayer
+        src="/assets/musics/Checking Manifest.mp3"
+        autoPlay
+        loop
+      />
+      ;
       <img
         className="spaceBackground"
         ref={background}
