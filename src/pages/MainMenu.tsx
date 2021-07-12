@@ -22,22 +22,70 @@ function HelpMenu(props: {
         <h2> Hakkında </h2>
         <p>
           {" "}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt,
-          necessitatibus repudiandae? Animi, tenetur quibusdam! Nihil incidunt
-          quisquam maxime magni quaerat aliquid culpa doloremque velit possimus
-          perferendis. Facilis id saepe tenetur.
+          ​Gemimiz dünyadan uzaklardaki bir gezegene yola çıktığında çok basit
+          bir görevimiz vardı: uyumak. Soğuk odadaki dondurulmuş uyku
+          yataklarına yatacak, ve hedefimize vardığımızda uyanacaktık. Ama öyle
+          olmadı...
         </p>
         <h2> Geliştiriciler </h2>
         <p>
           Umut Yiğitoğlu <br></br>Ege E. Özkan<br></br>Burak Keser
         </p>
         <h2> Lisanslar </h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias,
-          ratione. Nisi autem ipsam aspernatur aut? At vel alias quod ullam
-          exercitationem quidem qui itaque, beatae, dolorum, fuga voluptatum
-          nihil illo!
-        </p>
+        <ul>
+          <li>
+            Icons made by{" "}
+            <a href="" title="surang">
+              surang
+            </a>{" "}
+            from{" "}
+            <a href="https://www.flaticon.com/" title="Flaticon">
+              www.flaticon.com
+            </a>
+          </li>
+          <li>Space https://unsplash.com/photos/uhjiu8FjnsQ</li>
+          <li>
+            Grave - Icon made by{" "}
+            <a
+              href="https://www.flaticon.com/authors/nikita-golubev"
+              title="Nikita Golubev"
+            >
+              Nikita Golubev
+            </a>{" "}
+            from{" "}
+            <a href="https://www.flaticon.com/" title="Flaticon">
+              www.flaticon.com
+            </a>
+          </li>
+          <li>
+            <a
+              href="
+            https://fonts.google.com/specimen/Tourney?category=Display&preview.text=Hardship&preview.text_type=custom#about"
+            >
+              Tourney Font by Tyler Flinck
+            </a>
+          </li>
+          <li>
+            Barcode -
+            https://fonts.google.com/specimen/Libre+Barcode+128?preview.text=corrupted&preview.text_type=custom&category=Display#standard-styles
+          </li>
+          <li>
+            Roboto -
+            https://fonts.google.com/specimen/Roboto?preview.text=corrupted&preview.text_type=custom&category=Serif,Sans+Serif,Display,Monospace
+          </li>
+          <li>
+            The Space Ship Assets Pack by Gisha, CC 1.0, Modified
+            https://gisha.itch.io/spaceships-asset-pack
+          </li>
+          <li>
+            VT323 -
+            https://fonts.google.com/specimen/VT323?preview.text=A0BODX&preview.text_type=custom&query=VT{" "}
+          </li>
+          <li>
+            Roboto Slab -
+            https://fonts.google.com/specimen/Roboto+Slab?preview.text=A0BODX&preview.text_type=custom&query=roboto
+          </li>
+        </ul>
       </div>
     </div>
   );

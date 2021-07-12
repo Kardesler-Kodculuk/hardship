@@ -64,7 +64,7 @@ export function GamePage() {
       if (rollDie(0.6)) {
         rooms
           .filter((room) => room.name !== "cold")
-          [Math.floor(Math.random() * rooms.length)].modifyFailureRate(
+          [Math.floor(Math.random() * (rooms.length - 1))].modifyFailureRate(
             Math.round(Math.random() * 7) - 2
           );
       }
@@ -125,7 +125,6 @@ export function GamePage() {
             "Tebrikler kaptan! Gemiyi başarıyla hedefine ulaştırdınız.",
             "C:\\> TYPE STATS.TXT",
             `${gameManager.resources.humans.limit} sayıda yolcunun ${gameManager.resources.humans.total} adedini uyandırdınız ve canlı tuttunuz.`,
-            
           ]}
         />
       ) : null}
