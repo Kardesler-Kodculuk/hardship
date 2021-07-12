@@ -217,7 +217,7 @@ function HelpMenu(props: {
         </p>
         <h2> Geliştiriciler </h2>
         <p>
-          Umut Yiğitoğlu <br></br>Ege Emir Özkan<br></br>Burak Keser
+          Samet Umut Yiğitoğlu <br></br>Ege Emir Özkan<br></br>Burak Keser
         </p>
         <h2> Lisanslar </h2>
         <ul>
