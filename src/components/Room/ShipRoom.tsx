@@ -32,12 +32,12 @@ export default function ShipRoom(props: RoomProps) {
       ></img>
       <div
         className={
-          select
+          select || room.name === "cold"
             ? "hidden"
-            : "shipRoomFailureRate " + dangerLevel(room.failureRate)
+            : "shipRoomFailureRate " + dangerLevel(room.getFailureRate())
         }
       >
-        {room.failureRate}%
+        {room.getFailureRate()}%
       </div>
       {select
         ? null

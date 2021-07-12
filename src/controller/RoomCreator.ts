@@ -1,5 +1,5 @@
-import { createEvent, Event } from "./Events";
-import { Room } from "./Room";
+import { createEvent, Event } from "./Events"
+import { Room } from "./Room"
 
 const GeneratorEvents: Event[] = [
   createEvent(
@@ -14,7 +14,7 @@ const GeneratorEvents: Event[] = [
     "Cryogenic pods are failing, putting extra pressure on food supply.",
     { to: "sanity", type: "single", value: -100 }
   ),
-];
+]
 
 const CafeteriaEvents: Event[] = [
   createEvent(
@@ -24,7 +24,7 @@ const CafeteriaEvents: Event[] = [
     { to: "sanity", type: "single", value: -100 },
     { to: "sanity", type: "continuous", value: -0.25 }
   ),
-];
+]
 
 const LivingAreaEvents: Event[] = [
   createEvent(
@@ -36,7 +36,7 @@ const LivingAreaEvents: Event[] = [
     { to: "progress", type: "continuous", value: -0.05 },
     { to: "sanity", type: "continuous", value: -0.05 }
   ),
-];
+]
 
 const ControlDeckEvents: Event[] = [
   createEvent(
@@ -46,7 +46,7 @@ const ControlDeckEvents: Event[] = [
     { to: "progress", type: "single", value: -100 },
     { to: "sanity", type: "continuous", value: -0.25 }
   ),
-];
+]
 
 const ArmoryEvents: Event[] = [
   createEvent(
@@ -56,31 +56,31 @@ const ArmoryEvents: Event[] = [
     { to: "progress", type: "single", value: -100 },
     { to: "sanity", type: "continuous", value: -0.25 }
   ),
-];
+]
 
 const Generator = new Room(
   "generator",
   "Jenaretör",
   "Generates electricity",
   ...GeneratorEvents
-);
+)
 const Cafeteria = new Room(
   "cafeteria",
   "Kafeterya",
   "Generates food",
   ...CafeteriaEvents
-);
-const LivingArea = new Room("living", "Yatakhane", "", ...LivingAreaEvents);
-const ControlDeck = new Room("control", "Köprü", "", ...ControlDeckEvents);
+)
+const LivingArea = new Room("living", "Yatakhane", "", ...LivingAreaEvents)
+const ControlDeck = new Room("control", "Köprü", "", ...ControlDeckEvents)
 const Armory = new Room(
   "armory",
   "Cephanelik",
   "Defends the ship",
   ...ArmoryEvents
-);
-const ColdRoom = new Room("cold", "Soğuk Oda", "Stores frozen humans", ...[]);
+)
+const ColdRoom = new Room("cold", "Soğuk Oda", "Stores frozen humans", ...[])
 
-const rooms = [Generator, Cafeteria, LivingArea, ControlDeck, Armory, ColdRoom];
+const rooms = [Generator, Cafeteria, LivingArea, ControlDeck, Armory, ColdRoom]
 
 export {
   rooms,
@@ -90,11 +90,12 @@ export {
   ControlDeck,
   Armory,
   ColdRoom,
-};
+}
+
 export {
   GeneratorEvents,
   CafeteriaEvents,
   LivingAreaEvents,
   ControlDeckEvents,
   ArmoryEvents,
-};
+}

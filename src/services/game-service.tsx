@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { rooms } from "@controller";
+import { EventWithCount, rooms } from "@controller";
 import { gameManager } from "@controller";
 interface Game {
   freezed: boolean;
@@ -10,6 +10,8 @@ interface Game {
   addStaff: () => void;
   removeStaff: () => void;
   wakeStaff: () => void;
+  happenedEvents: () => EventWithCount[];
+  happenedEventCount: () => number;
 }
 
 const GameContext = React.createContext<Game | null>(null);
@@ -22,6 +24,7 @@ export const GameProvider = (props: GameProviderProps) => {
   const { children } = props;
   const [freezed, setFreeze] = React.useState(true);
   const [lock, setLock] = React.useState<number>(1);
+  const [happened, setHappened] = React.useState<EventWithCount[]>([]);
 
   useEffect(() => {
     if (lock === 0) {
@@ -30,7 +33,9 @@ export const GameProvider = (props: GameProviderProps) => {
       setFreeze(true);
     }
   }, [lock]);
-
+  useEffect(() => {
+    console.log(happened);
+  }, [happened]);
   const freeze = () => {
     setLock((lock) => lock + 1);
   };
@@ -46,12 +51,29 @@ export const GameProvider = (props: GameProviderProps) => {
     rooms.forEach((room) => {
       if (
         room.name !== "cold" &&
-        room.failureRate > Math.floor(Math.random() * 100) &&
-        room.fireEvent()
+        room.getFailureRate() > Math.floor(Math.random() * 100)
       ) {
-        freeze();
+        let e = room.fireEvent();
+        if (e !== null) {
+          freeze();
+          setHappened((happened) => {
+            if (e !== null) {
+              let a = [e, ...happened];
+              return a;
+            }
+            return happened;
+          });
+        }
       }
     });
+  };
+
+  const happenedEvents = () => {
+    return [...happened];
+  };
+
+  const happenedEventCount = () => {
+    return [...happened].length;
   };
 
   const addStaff = () => {
@@ -74,6 +96,8 @@ export const GameProvider = (props: GameProviderProps) => {
     addStaff,
     removeStaff,
     wakeStaff,
+    happenedEvents,
+    happenedEventCount,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

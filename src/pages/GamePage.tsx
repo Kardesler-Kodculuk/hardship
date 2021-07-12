@@ -64,9 +64,11 @@ export function GamePage() {
   React.useEffect(() => {
     if (event > 30 && event % 16 === 0) {
       if (rollDie(0.6)) {
-        rooms[Math.floor(Math.random() * rooms.length)].modifyFailureRate(
-          Math.round(Math.random() * 7) - 2
-        );
+        rooms
+          .filter((room) => room.name !== "cold")
+          [Math.floor(Math.random() * rooms.length)].modifyFailureRate(
+            Math.round(Math.random() * 7) - 2
+          );
       }
     }
     if (event > 120 && event % 64 === 0) {

@@ -38,10 +38,19 @@ export default function RoomSettings(props: RoomSettingsProps) {
   return (
     <div className="settings">
       <div className="staffRange">
+        <h1>{room.title}</h1>
+        <p>
+          Bu ekrandan {room.title}'da bulunan mürettabatı kontrol edebilirsiniz.
+          <em> daha fazla mürettebat hata olasılığını düşürmektedir.</em>
+        </p>
         <button className="staffButton addStaff" onClick={addStaff}>
           +
         </button>
-        <button className="staffButton removeStaff" onClick={removeStaff}>
+        <button
+          className="staffButton removeStaff"
+          onClick={removeStaff}
+          style={{ marginRight: "25px" }}
+        >
           -
         </button>
         {[...Array(room.maxStaffCount)].map((_, i) => {

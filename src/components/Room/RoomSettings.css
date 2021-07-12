@@ -1,42 +1,66 @@
 .settings {
   margin-top: 20px;
-  margin-left: 20px;
-  margin-right: auto;
   margin-bottom: auto;
+  background-color: black;
+  padding: 20px;
 }
 
 .staffButton {
-  border-radius: 6px;
   font-size: 20px;
-  width: 30px;
+  width: 50px;
   height: 25px;
   border: none;
   padding: 2px;
   margin: 2px;
+  font-size: 25px;
+  font-family: "VT323";
+}
+.settings h1 {
+  color: green;
+  text-align: center;
+  font-family: "VT323";
+  background-color: black;
+}
+
+.settings em {
+  font-family: "VT323";
+  font-weight: 400;
+}
+.settings p {
+  color: green;
+  text-align: left;
+  font-family: "VT323";
+  background-color: black;
 }
 
 .staffButton:hover {
-  transform: scale(1.1);
   color: white;
 }
 
-.addStaff{
+.addStaff {
   color: black;
-  background-color: rgb(53, 45, 168);
+  background-color: rgba(0, 255, 0, 0.25);
+}
+.addStaff:hover {
+  background-color: rgba(0, 255, 0, 0.3);
+}
+.addStaff:active {
+  background-color: green;
+  color: rgba(0, 255, 0, 0.25);
 }
 
-.addStaff:hover{
-  background-color: rgb(66, 58, 179);
-}
-
-.removeStaff{
+.removeStaff {
   color: black;
   background-color: rgb(250, 0, 0);
-  
 }
-.removeStaff:hover{
+.removeStaff:hover {
   background-color: rgb(199, 55, 55);
 }
+.removeStaff:active {
+  background-color: rgb(104, 20, 14);
+  color: rgba(255, 0, 0, 0.25);
+}
+
 .staffImage {
   filter: brightness(260%);
   width: 23px;
