@@ -10,9 +10,10 @@ const GeneratorEvents: Event[] = [
   ),
   createEvent(
     1001,
-    "Failing Pods",
-    "Cryogenic pods are failing, putting extra pressure on food supply.",
-    { to: "sanity", type: "single", value: -100 }
+    "Soğuk oda için enerji lazım!",
+    "Dolaplar çalışmayı durduruyor, mürettabat insanları için üzülüyor.",
+    { to: "sanity", type: "single", value: -100 },
+    { to: "humans", type: "single", value: -1 }
   ),
 ]
 
@@ -23,6 +24,20 @@ const CafeteriaEvents: Event[] = [
     "Gıda stoğumuz hızla tükenmekte, çaresizlikten giderek daha kötü yemeklere başvuruyoruz...",
     { to: "sanity", type: "single", value: -100 },
     { to: "sanity", type: "continuous", value: -0.25 }
+  ),
+  createEvent(
+    2001,
+    "Açlık!",
+    "Gıda stoğumuz hızla tükenmekte, açlıktan ölüyoruz...",
+    { to: "food", type: "single", value: -100 },
+    { to: "sanity", type: "single", value: -100 },
+    { to: "sanity", type: "continuous", value: -0.25 }
+  ),
+  createEvent(
+    2001,
+    "Yemekler Bozuluyor!",
+    "Kaynakları kontrol etmek için daha fazla mürettebata ihtiyaç var...",
+    { to: "food", type: "single", value: -100 },
   ),
 ]
 
@@ -36,6 +51,15 @@ const LivingAreaEvents: Event[] = [
     { to: "progress", type: "continuous", value: -0.05 },
     { to: "sanity", type: "continuous", value: -0.05 }
   ),
+  createEvent(
+    300, "Stres Yeme", "İnsanlar uykusuzluk oluşan stres için yemeye başvuruyor.",
+    { to: "food", type: "continuous", value: -0.25 },
+    { to: "sanity", type: "continuous", value: -0.25 }
+  ),
+  createEvent(
+    300, "Kabsular", "Mürettabat normalden daha fazla kabusa maruz kalıyor.",
+    { to: "sanity", type: "continuous", value: -0.25 }
+  )
 ]
 
 const ControlDeckEvents: Event[] = [
@@ -46,6 +70,20 @@ const ControlDeckEvents: Event[] = [
     { to: "progress", type: "single", value: -100 },
     { to: "sanity", type: "continuous", value: -0.25 }
   ),
+  createEvent(
+    4000,
+    "Yol Kaygisi!",
+    "Kaptan yolculuk konusunda gereğinden fazla endişelenmeye başladı, yardıma ihtiyacı var.",
+    { to: "progress", type: "continuous", value: -0.25 },
+    { to: "sanity", type: "continuous", value: -0.25 }
+  ),
+  createEvent(
+    4000,
+    "Meteorla Yakın Temas!",
+    "Mürettabatın dikkatsiğliği sonucu nerdeyse gemi parçalanıyordu! Yolcular stresli",
+    { to: "sanity", type: "continuous", value: -0.25 },
+    { to: "sanity", type: "single", value: -50 }
+  ),
 ]
 
 const ArmoryEvents: Event[] = [
@@ -54,6 +92,14 @@ const ArmoryEvents: Event[] = [
     "Uzaylılar Saldırıyor",
     "Uzaylı saldırısına hazırlıksız yakalandık, gemimiz kaçış manevraları yapıp zaman kaybetmek zorunda kaldı.",
     { to: "progress", type: "single", value: -100 },
+    { to: "sanity", type: "continuous", value: -0.25 }
+  ),
+  createEvent(
+    4000,
+    "Isyan!",
+    "Bir anlık dikkatiszlik mürettabattaki sivrizekalıları yoldan çıkarttı, cephaneliğe sahip çık.",
+    { to: "progress", type: "single", value: -100 },
+    { to: "food", type: "single", value: -50 },
     { to: "sanity", type: "continuous", value: -0.25 }
   ),
 ]
