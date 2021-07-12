@@ -82,6 +82,6 @@ export class Room {
   clear() {
     this.eventHandler.clear()
     this.failureRate = 0
-    this.staffCount = 5
+    this.staffCount = 0
   }
 }

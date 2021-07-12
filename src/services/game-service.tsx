@@ -34,9 +34,6 @@ export const GameProvider = (props: GameProviderProps) => {
       setFreeze(true);
     }
   }, [lock]);
-  useEffect(() => {
-    console.log(happened);
-  }, [happened]);
   const freeze = () => {
     setLock((lock) => lock + 1);
   };

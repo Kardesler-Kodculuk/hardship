@@ -41,7 +41,7 @@ class Game {
     for (let key in this.resources) {
       this.resources[key as s].total += resourceChange[key as s].total
       this.resources[key as s].change += resourceChange[key as s].change
-      if (key == "humans" && resourceChange[key as s].total <= 0) {
+      if (key === "humans" && resourceChange[key as s].total <= 0) {
         this.deadCount -= resourceChange[key as s].total // As we keep track of them.
       }
     }

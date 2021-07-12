@@ -50,16 +50,15 @@ export default class Events {
       let r = { ...CHANGE }
       e.effects.forEach((e) => {
         if (e.type === "continuous") {
-          c[e.to].change += e.value
-          r[e.to].change += e.value
+          c[e.to] = { ...c[e.to], change: c[e.to].change + e.value }
+          r[e.to] = { ...r[e.to], change: r[e.to].change - e.value }
         } else {
-          c[e.to].total += e.value
-          r[e.to].total += e.value
+          c[e.to] = { ...c[e.to], total: c[e.to].total + e.value }
         }
       })
-      this.currentEvents.push({ ...e, count: this.currentEventCount() })
-      this.currentEffects.push(r)
       Game.modifyResources(c)
+      this.currentEffects.push(r)
+      this.currentEvents.push({ ...e, count: this.currentEventCount() })
       return { ...e, count: this.currentEventCount() }
     }
     return null
