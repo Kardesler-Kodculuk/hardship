@@ -31,19 +31,19 @@ export function Event(props: {
             if (e.type === "continuous") {
               return (
                 <p>
-                  {"Lowers "}
-                  <b>{e.to}</b>
-                  {" gain by "}
+                  <b>{e.to_tr}</b>
+                  {" kaynağının değişimi "}
                   <b>{e.value}</b>
+                  {" azaldı"}
                 </p>
               );
             } else {
               return (
                 <p>
-                  {e.value > 0 ? "Increase of " : "Immediate loss of "}
+                  <b>{e.to_tr}</b>
+                  {" kaynağı "}
                   <b>{e.value}</b>
-                  {" to "}
-                  <b>{e.to}</b>
+                  {e.value > 0 ? " arttı." : " azaldı."}
                 </p>
               );
             }

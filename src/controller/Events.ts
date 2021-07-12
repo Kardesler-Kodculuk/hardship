@@ -11,6 +11,7 @@ const CHANGE: states = {
 export interface Effect {
   type: "continuous" | "single"
   to: keyof states
+  to_tr: "Enerji" | "İnsan" | "Yemek" | "Akıl Sağlığı" | "İlerleme"
   value: number
 }
 
