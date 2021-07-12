@@ -18,7 +18,7 @@ export default function ShipRoom(props: RoomProps) {
   const [select, setSelect] = useState(false);
   return (
     <div
-      className={select ? "" : "room"}
+      className={select ? "" : "room roomDiv"}
       onClick={() => {
         if (!select) {
           setSelect(true);
@@ -26,12 +26,19 @@ export default function ShipRoom(props: RoomProps) {
       }}
     >
       <img
-        className={
-          select ? "selectedRoom" : "room " + dangerLevel(room.failureRate)
-        }
+        className={select ? "selectedRoom" : "room"}
         src={`/assets/images/rooms/${room.name}.png`}
         alt={`${room.title} resmi.`}
       ></img>
+      <div
+        className={
+          select
+            ? "hidden"
+            : "shipRoomFailureRate " + dangerLevel(room.failureRate)
+        }
+      >
+        {room.failureRate}%
+      </div>
       {select
         ? null
         : [...Array(room.staffCount)].map((_, i) => {

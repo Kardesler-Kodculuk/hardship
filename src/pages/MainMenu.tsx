@@ -51,7 +51,7 @@ export function MainMenu() {
       <HelpMenu setVisible={setHelpVisible} visible={helpVisible} />
       <div className="mainMenu">
         <header className="mainMenuGameTitle">
-          Har<text className="fallenLetter">d</text>ship
+          Har<span className="fallenLetter">d</span>ship
         </header>
         <section className="mainMenuOptions">
           <ul>

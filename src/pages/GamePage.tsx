@@ -1,11 +1,12 @@
 import React from "react";
 import { EndScreen, Resources, WelcomeMessage } from "@components";
-import { gameManager } from "@controller";
+import { gameManager, rooms } from "@controller";
 import "./GamePage.css";
 import { Ship } from "@components";
 import { useGame } from "@services";
 import anime from "animejs";
 import { useHistory } from "react-router";
+import { rollDie } from "@utils";
 
 function fireEngines(callback: () => void) {
   let target = document.getElementsByClassName("shipWrapper")[0];
@@ -61,16 +62,19 @@ export function GamePage() {
   };
 
   React.useEffect(() => {
-    if (event % 16 === 0) {
+    if (event > 30 && event % 16 === 0) {
+      if (rollDie(0.6)) {
+        rooms[Math.floor(Math.random() * rooms.length)].modifyFailureRate(
+          Math.round(Math.random() * 7) - 2
+        );
+      }
+    }
+    if (event > 120 && event % 64 === 0) {
       fireEvents();
     }
   }, [event, fireEvents]);
 
   React.useEffect(() => {
-    const goToWinScreen = () => {
-      history.push("/winscreen");
-    };
-
     if (!freezed) {
       gameManager.gameLoop(0.2);
       setTimeout(() => setTick((previousTick) => !previousTick), 200);

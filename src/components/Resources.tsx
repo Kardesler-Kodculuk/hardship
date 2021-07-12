@@ -109,7 +109,8 @@ export default function Resources() {
                 {
                   name: "Değişim: ",
                   value: `${Math.floor(
-                    gameManager.resources[element as keyof states].change
+                    gameManager.resources[element as keyof states].change -
+                      0.4 * gameManager.resources.humans.total
                   )}`,
                 },
               ]}

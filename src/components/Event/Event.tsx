@@ -26,7 +26,7 @@ export function Event(props: {
             <b>{room.title}</b>
           </p>
           <p>{message}</p>
-          <h3 style={{ fontFamily: "VT323", color: "green" }}>Effects:</h3>
+          <h3 style={{ fontFamily: "VT323", color: "green" }}>Etkiler:</h3>
           {effects.map((e) => {
             if (e.type === "continuous") {
               return (
@@ -57,7 +57,7 @@ export function Event(props: {
             }}
             className="eventButton"
           >
-            Kapat!
+            Kahretsin!
           </button>
         </div>
       </div>
