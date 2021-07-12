@@ -27,7 +27,7 @@ export default function ShipRoom(props: RoomProps) {
     >
       <img
         className={select ? "selectedRoom" : "room"}
-        src={`/assets/images/rooms/${room.name}.png`}
+        src={`./assets/images/rooms/${room.name}.png`}
         alt={`${room.title} resmi.`}
       ></img>
       {select ? null : (
@@ -49,7 +49,7 @@ export default function ShipRoom(props: RoomProps) {
               <img
                 alt="staffImages"
                 className="staffCount"
-                src={`/assets/images/icons/humans.svg`}
+                src={`./assets/images/icons/humans.svg`}
               />
             );
           })}

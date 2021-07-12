@@ -114,7 +114,7 @@ export function GamePage() {
   return (
     <div className="gameWindow">
       <ReactAudioPlayer
-        src="/assets/musics/Checking Manifest.mp3"
+        src="./assets/musics/Checking Manifest.mp3"
         autoPlay
         loop
       />
@@ -123,7 +123,7 @@ export function GamePage() {
         className="spaceBackground"
         ref={background}
         alt="A sliding background full of stars."
-        src={"/assets/images/backgrounds/gamebg.jpg"}
+        src={"./assets/images/backgrounds/gamebg.jpg"}
       ></img>
       <Ship gameOver={gameState !== "ongoing"} />
       {gameState === "victory" ? (

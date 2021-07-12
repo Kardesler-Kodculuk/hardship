@@ -57,7 +57,7 @@ export default function RoomSettings(props: RoomSettingsProps) {
               className={
                 i < room.staffCount ? `staffImage` : "dimmedStaffImage"
               }
-              src={`/assets/images/icons/humans.svg`}
+              src={`./assets/images/icons/humans.svg`}
             />
           );
         })}

@@ -29,7 +29,7 @@ function ResourceBar(props: ResourceBarProps) {
     <div className="barWrapper">
       <div className={props.resourceName + "ResourceBar"}>
         <img
-          src={`/assets/images/icons/${props.resourceName}.svg`}
+          src={`./assets/images/icons/${props.resourceName}.svg`}
           className="barIcon"
         ></img>
         <div className="barBackground">
@@ -68,7 +68,7 @@ function ResourceKey(props: ResourceBarProps) {
       <div className={props.resourceName + "ResourceKey"}>
         <img
           className={`resourceImage`}
-          src={`/assets/images/icons/${props.resourceName}.svg`}
+          src={`./assets/images/icons/${props.resourceName}.svg`}
         />
         <div className="hover">
           <p>Halihazırda kullanılmayan mürettebat sayısı.</p>
@@ -76,7 +76,7 @@ function ResourceKey(props: ResourceBarProps) {
         {Math.round(props.totalResources)}/{props.resourceLimit}
       </div>
       <div className="deadCount">
-        <img src="/assets/images/icons/grave.svg" className="barIcon"></img>
+        <img src="./assets/images/icons/grave.svg" className="barIcon"></img>
         <p> {gameManager.deadCount} </p>
         <div className="hover">
           <p>Gözetiminizde vefat etmiş mürettebat sayısı.</p>
