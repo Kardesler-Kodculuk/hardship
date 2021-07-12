@@ -42,8 +42,6 @@ function findDeadWhy() {
     return "kabul edilen yiyecek kaynaklarından vazgeçmek zorunda kaldılar";
   } else if (gameManager.resources.energy.total <= 0) {
     return "enerjileri bittiği için dondular";
-  } else if (gameManager.resources.humans.total <= 0) {
-    return "bütün yolcularını kaybettiler";
   }
 }
 
@@ -125,6 +123,7 @@ export function GamePage() {
             "Tebrikler kaptan! Gemiyi başarıyla hedefine ulaştırdınız.",
             "C:\\> TYPE STATS.TXT",
             `${gameManager.resources.humans.limit} sayıda yolcunun ${gameManager.resources.humans.total} adedini uyandırdınız ve canlı tuttunuz.`,
+            
           ]}
         />
       ) : null}

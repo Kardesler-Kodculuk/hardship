@@ -104,7 +104,6 @@ class Game {
     return (
       this.resources.energy.total <= 0 ||
       this.resources.food.total <= 0 ||
-      this.resources.humans.total <= 0 ||
       this.resources.sanity.total <= 0
     );
   }
