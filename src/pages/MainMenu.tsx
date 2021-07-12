@@ -217,7 +217,7 @@ function HelpMenu(props: {
         </p>
         <h2> Geliştiriciler </h2>
         <p>
-          Umut Yiğitoğlu <br></br>Ege E. Özkan<br></br>Burak Keser
+          Umut Yiğitoğlu <br></br>Ege Emir Özkan<br></br>Burak Keser
         </p>
         <h2> Lisanslar </h2>
         <ul>
@@ -263,7 +263,7 @@ function HelpMenu(props: {
           <li>
             <a
               href="
-            https://fonts.google.com/specimen/Roboto?preview.text=corrupted&preview.text_type=custom&category=Serif,Sans+Serif,Display,Monospace"
+            https://fonts.google.com/specimen/Roboto"
             >
               Roboto Font by Christian Robertson
             </a>
@@ -274,12 +274,12 @@ function HelpMenu(props: {
             </a>
           </li>
           <li>
-            <a href="https://fonts.google.com/specimen/VT323?preview.text=A0BODX&preview.text_type=custom&query=VT">
+            <a href="https://fonts.google.com/specimen/VT323">
               VT323 Font by Peter Hull
             </a>
           </li>
           <li>
-            <a href="https://fonts.google.com/specimen/Roboto+Slab?preview.text=A0BODX&preview.text_type=custom&query=roboto">
+            <a href="https://fonts.google.com/specimen/Roboto+Slab">
               Roboto Slab by Christian Robertson
             </a>
           </li>
