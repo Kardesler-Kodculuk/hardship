@@ -30,7 +30,10 @@ export class Room {
   }
 
   stopEvent() {
-    this.eventHandler.stopEvent()
+    if (this.failureRate === 0) {
+      console.log("asdadasdasd")
+      this.eventHandler.stopEvent()
+    }
   }
 
   //Adds a single staff to room, decreases the failure rate of the room
