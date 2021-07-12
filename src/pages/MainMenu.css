@@ -136,6 +136,7 @@
 .helpTextArea {
   overflow-y: scroll;
   padding: 20px;
+  max-height: 450px;
   text-align: left;
 }
 
