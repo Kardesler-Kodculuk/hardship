@@ -22,18 +22,14 @@ export default function RoomSettings(props: RoomSettingsProps) {
       add();
       room.addStaff();
       room.stopEvent();
-    } catch (err) {
-      console.log(err.message);
-    }
+    } catch (err) {}
   };
 
   const removeStaff = () => {
     try {
       room.removeStaff();
       remove();
-    } catch (err) {
-      console.log(err.message);
-    }
+    } catch (err) {}
   };
   return (
     <div className="settings">

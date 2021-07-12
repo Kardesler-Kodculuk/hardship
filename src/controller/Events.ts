@@ -110,6 +110,10 @@ export default class Events {
       throw new Error("Event not found")
     }
   }
+  clear() {
+    this.currentEffects = []
+    this.currentEvents = []
+  }
 }
 
 export function createEvent(

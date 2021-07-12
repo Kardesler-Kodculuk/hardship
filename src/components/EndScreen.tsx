@@ -2,6 +2,7 @@ import { useHistory } from "react-router";
 import "./EndScreen.css";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useGame } from "@services";
 interface ScreenProps {
   paragraphs: string[];
   showMainButton?: string;
@@ -15,6 +16,8 @@ interface ScreenProps {
  */
 function OldScreen(props: ScreenProps) {
   const history = useHistory();
+  const { restart } = useGame();
+
   return (
     <div className="oldComputerScreen">
       {props.paragraphs
@@ -26,6 +29,7 @@ function OldScreen(props: ScreenProps) {
         <button
           onClick={() => {
             history.push("/");
+            restart();
           }}
         >
           {props.showMainButton}
@@ -41,6 +45,7 @@ export function EndScreen(props: { paragraphs: string[] }) {
   const [currentParagraphIndex, setCurrentParagraphIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0); // Index of the letter in the current paragraph.
   const [hasFinished, setHasFinished] = useState(false); // True if the rendering finished.
+
   useEffect(() => {
     let changed = false;
     if (currentParagraphIndex >= paragraphs.length) {
@@ -82,6 +87,7 @@ export function EndScreen(props: { paragraphs: string[] }) {
       </div>
     );
   }
+
   return (
     <div className="victoryScreen">
       <OldScreen paragraphs={renderedParagraphs} />

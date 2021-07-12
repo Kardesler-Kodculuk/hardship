@@ -12,6 +12,7 @@ interface Game {
   wakeStaff: () => void;
   happenedEvents: () => EventWithCount[];
   happenedEventCount: () => number;
+  restart: () => void;
 }
 
 const GameContext = React.createContext<Game | null>(null);
@@ -88,6 +89,22 @@ export const GameProvider = (props: GameProviderProps) => {
     gameManager.addToStaff(1);
   };
 
+  const restart = () => {
+    gameManager.resources = {
+      energy: { total: 500.0, change: 10, limit: 1000, name: "Enerji" },
+      humans: { total: 5, change: 0, limit: 250, name: "İnsan" },
+      food: { total: 500.0, change: 10, limit: 1000, name: "Yemek" },
+      sanity: { total: 500.0, change: 10, limit: 1000, name: "Akıl Sağlığı" },
+      progress: { total: 0.0, change: 0.83, limit: 1000, name: "İlerleme" },
+    };
+    gameManager.staffCount = 5;
+    gameManager.deadCount = 0;
+    rooms.forEach((room) => room.clear());
+    setHappened([]);
+    setFreeze(true);
+    setLock(1);
+  };
+
   const value = {
     freezed,
     freeze,
@@ -98,6 +115,7 @@ export const GameProvider = (props: GameProviderProps) => {
     wakeStaff,
     happenedEvents,
     happenedEventCount,
+    restart,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

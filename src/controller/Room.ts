@@ -78,4 +78,10 @@ export class Room {
       return 0
     }
   }
+
+  clear() {
+    this.eventHandler.clear()
+    this.failureRate = 0
+    this.staffCount = 5
+  }
 }
