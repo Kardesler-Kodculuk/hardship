@@ -30,15 +30,18 @@ export default function ShipRoom(props: RoomProps) {
         src={`/assets/images/rooms/${room.name}.png`}
         alt={`${room.title} resmi.`}
       ></img>
-      <div
-        className={
-          select || room.name === "cold"
-            ? "shipRoomFailureRate lowDanger"
-            : "shipRoomFailureRate " + dangerLevel(room.getFailureRate())
-        }
-      >
-        {room.name === "cold" ? "Soğuk Oda" : room.getFailureRate() + "%"}
-      </div>
+      {select ? null : (
+        <div
+          className={
+            select || room.name === "cold"
+              ? "shipRoomFailureRate lowDanger"
+              : "shipRoomFailureRate " + dangerLevel(room.getFailureRate())
+          }
+        >
+          {room.name === "cold" ? "Soğuk Oda" : room.getFailureRate() + "%"}
+        </div>
+      )}
+
       {select
         ? null
         : [...Array(room.staffCount)].map((_, i) => {
